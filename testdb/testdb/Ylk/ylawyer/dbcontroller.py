@@ -6,7 +6,7 @@ from django import forms
 from django.core import serializers
 from django.http import HttpResponse
 from django.forms.models import model_to_dict 
-from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList
+from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList, userAddrList
  
 #/order/get_order_list       //获取用户订单
 '''
@@ -151,9 +151,62 @@ def resp_success_saved_product_set_json(data):
             success_json['data'] = dataList
             
             return success_json
-
-
-
+            
+##新增我的地址
+def addRecvOrderAddr(request):
+    success_json = {'rtnCode' : 0, 'rtnMsg' : 'Add new user address success!', 'addr_id' : ''}
+    err_resp_json = {'rtnCode' : 2, 'rtnMsg' : 'Add new user address failed! please check', 'addr_id' : ''}
+    if request.method == 'POST':
+        trd_session = request.POST['trd_session']
+        isValidSession, curUserId= check_session_value(trd_session)
+        if isValidSession == False:
+            err_json = response_invalid_session_json()
+            return HttpResponse(json.dumps(err_json), content_type="application/json")
+        else:
+            recvName = request.POST['recv_name']
+            recvPhone = request.POST['recv_phone']
+            recvAddr = request.POST['recv_addr']
+            userAddrObj = userAddrList(user_id=curUserId, recipient_name=recvName, recipient_phone=recvPhone, recipient_addr=recvAddr)
+            userAddrObj.save()
+            try:
+                userAddObjAft = userAddrList.objects.get(user_id=curUserId, recipient_name=recvName, recipient_phone=recvPhone, recipient_addr=recvAddr)
+            except:
+                return HttpResponse(json.dumps(err_resp_json), content_type="application/json")
+            else:
+                addr_id = userAddObjAft.addr_id
+                success_json['addr_id'] = addr_id
+                return HttpResponse(json.dumps(success_json), content_type="application/json")
+##设置我的地址
+def setRecOrderAddr(request):
+    success_json = {'rtnCode' : 0, 'rtnMsg' : 'Set new user address success!', 'addr_id' : 0}
+    if request.method == 'POST':
+        trd_session = request.POST['trd_session']
+        isValidSession, curUserId= check_session_value(trd_session)
+        if isValidSession == False:
+            err_json = response_invalid_session_json()
+            return HttpResponse(json.dumps(err_json), content_type="application/json")
+        else:
+            addressId = request.POST['addr_id']
+            recvName = request.POST['recv_name']
+            recvPhone = request.POST['recv_phone']
+            recvAddr = request.POST['recv_addr']
+            try:
+                userAddObjAft = userAddrList.objects.get(addr_id=addressId)
+            except:
+                err_resp_json = {'rtnCode' : 2, 'rtnMsg' : 'Update user address failed! please check'}
+                return HttpResponse(json.dumps(err_resp_json), content_type="application/json")
+            else:
+                userAddObjAft.recipient_name = recvName
+                userAddObjAft.recipient_phone = recvPhone
+                userAddObjAft.recipient_addr = recvAddr
+                userAddObjAft.save()
+                success_json['addr_id'] = addressId
+                print(recvAddr)
+                return HttpResponse(json.dumps(success_json), content_type="application/json")
+        
+        
+            
+#获取首页产品列表，按照导航栏标签区分：
 def getAllProductList(request):
     success_json = get_all_product_list_success_json()
     return HttpResponse(json.dumps(success_json), content_type="application/json")

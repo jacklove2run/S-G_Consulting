@@ -64,6 +64,11 @@ class SessionOpenId(models.Model):
     def __str__(self):
     
         return self.product_name
-    
-    
+        
+class userAddrList(models.Model):
+    user_id = models.CharField('3rd_session', max_length=256)
+    addr_id = models.AutoField(primary_key=True)
+    recipient_name = models.CharField('收件人', max_length=255, default='')
+    recipient_phone = models.CharField('收件人手机号', max_length=15, default='')
+    recipient_addr = models.CharField('收件人地址', max_length=255, default='')
     
