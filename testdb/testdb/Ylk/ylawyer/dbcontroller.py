@@ -83,6 +83,10 @@ def response_err_json():
     return err_json
     #return HttpResponse(json.dumps(err_json), content_type="application/json")  
 
+def response_no_user_json():
+    err_json = {'rtnCode' : 0, 'rtnMsg' : 'no this user info'}
+    return err_json
+    #return HttpResponse(json.dumps(err_json), content_type="application/json") 
     
 def response_no_product_err_json():
     err_json={'rtnCode' : 3, 'rtnMsg' : 'error: No this productId'}
@@ -274,7 +278,7 @@ def getUserInfo(request, trd_session):
         else: 
             userObj = UserInfo.objects.get(user_id=curUserId)
     except:
-        err_json = response_err_json()
+        err_json = response_no_user_json()
         return HttpResponse(json.dumps(err_json), content_type="application/json") 
     else:
         success_json = response_success_json(userObj)
