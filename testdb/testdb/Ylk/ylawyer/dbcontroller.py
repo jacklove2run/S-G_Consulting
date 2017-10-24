@@ -59,7 +59,7 @@ def get_all_product_list_success_json():
 
 ##查询成功的空json
 def success_none_json():
-    success_none_json_data = {'rtnCode' : 5, 'rtnMsg' : 'no saved product in the list', 'data' : ''}
+    success_none_json_data = {'rtnCode' : 0, 'rtnMsg' : 'no saved product in the list', 'data' : ''}
     return success_none_json_data
 
 
