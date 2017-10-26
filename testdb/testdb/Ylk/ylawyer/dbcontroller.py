@@ -124,6 +124,27 @@ def response_success_order_set_json(data):
         success_json['data'] = dataList
         return success_json
         
+####序列化查询结果集为json格式
+def response_success_addr_set_json(data):
+    success_json = {
+        'rtnCode' : 0, 
+        'rtnMsg' : 'Get address success!'             
+    }
+    dataList = []
+    for cur_data in data:
+        recv_name = cur_data.recipient_name
+        recv_phone = cur_data.recipient_phone
+        recv_addr = cur_data.recipient_addr
+        addr_id = cur_data.addr_id
+        addrDict = dict()
+        addrDict.update(recv_name=recv_name, recv_phone=recv_phone, recv_addr=recv_addr, addr_id=addr_id)
+        dataList.append(addrDict)
+        success_json['data'] = dataList
+        return success_json
+        
+        
+
+        
 ##获取保存的产品列表
 def resp_success_saved_product_set_json(data):
     error_json = {'rtnCode' : 2, 'rtnMsg' : 'error'}
@@ -155,6 +176,24 @@ def resp_success_saved_product_set_json(data):
             success_json['data'] = dataList
             
             return success_json
+            
+##获取地址列表         
+def getRecvOrderAddr(request, trd_session):
+    isValidSession, curUserId= check_session_value(trd_session)
+    if isValidSession == False:
+        err_json = response_invalid_session_json()
+        return HttpResponse(json.dumps(err_json), content_type="application/json")
+    else:
+        userAddrObj = userAddrList.objects.filter(user_id=curUserId)
+        if userAddrObj.exists():
+            success_json = response_success_addr_set_json(userAddrObj)
+            return HttpResponse(json.dumps(success_json), content_type="application/json")
+        else:
+            non_json = {'rtnCode' : 0, 'rtnMsg' : 'no data in addr list'}
+            return HttpResponse(json.dumps(non_json), content_type="application/json")
+            
+
+    
             
 ##新增我的地址
 def addRecvOrderAddr(request):
@@ -208,7 +247,7 @@ def setRecOrderAddr(request):
                 print(recvAddr)
                 return HttpResponse(json.dumps(success_json), content_type="application/json")
         
-        
+##获取        
             
 #获取首页产品列表，按照导航栏标签区分：
 def getAllProductList(request):

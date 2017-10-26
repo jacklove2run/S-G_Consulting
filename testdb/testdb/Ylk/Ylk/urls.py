@@ -29,5 +29,6 @@ urlpatterns = [
     url(r"^commodity/get_commodity_status/(?P<cur_product_id>\S+)/(?P<trd_session>\S+)$", dbcontroller.getProductStoredInfo),
     url(r"^auth/oauth$", login.get_login_session),
     url(r"^address/set_recv_address$", dbcontroller.setRecOrderAddr),
-    url(r"^address/add_recv_address$", dbcontroller.addRecvOrderAddr)
+    url(r"^address/add_recv_address$", dbcontroller.addRecvOrderAddr),
+    url(r"^address/add_get_address/(?P<trd_session>\S+)$", dbcontroller.getRecvOrderAddr)
 ]
