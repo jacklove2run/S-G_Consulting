@@ -108,6 +108,8 @@ def create_pay(request):
             sign = pay_info['sign']
             pay_info.pop('sign')
             pay_info['total_fee'] =  total_fee
+            pay_info['rtnCode'] = 1
+            pay_info['rtnMsg'] = 'wxpay request success!'
             print(pay_info)
             if pay_info:
                 if isFirstOrder == 'True':
