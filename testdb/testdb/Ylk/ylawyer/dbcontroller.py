@@ -192,7 +192,24 @@ def getRecvOrderAddr(request, trd_session):
             non_json = {'rtnCode' : 0, 'rtnMsg' : 'no data in addr list'}
             return HttpResponse(json.dumps(non_json), content_type="application/json")
             
-
+##删除地址
+def deleteRecvOrderAddr(request):
+    success_json = {'rtnCode' : 0, 'rtnMsg' : 'Delete user address success!'}
+    if request.method == 'POST':
+        trd_session = request.POST['trd_session']
+        isValidSession, curUserId= check_session_value(trd_session)
+        if isValidSession == False:
+            err_json = response_invalid_session_json()
+            return HttpResponse(json.dumps(err_json), content_type="application/json")
+        else:
+            try:
+                addressId = request.POST['addr_id']
+                userAddrList.objects.filter(addr_id=addressId).delete()
+            except:
+                err_json = response_err_json()
+                return HttpResponse(json.dumps(err_json), content_type="application/json")
+            else:
+                return HttpResponse(json.dumps(success_json), content_type="application/json")
     
             
 ##新增我的地址
