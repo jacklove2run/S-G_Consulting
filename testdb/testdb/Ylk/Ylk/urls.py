@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from ylawyer import dbcontroller
 from ylawyer import login
+from ylawyer import app
 urlpatterns = [
     url(r"^order/get_order_list/(?P<trd_session>\S+)$", dbcontroller.getOrderList),
     url(r"^order/get_unsaved_order_list/(?P<trd_session>\S+)$", dbcontroller.getUnsavedOrderList),
