@@ -32,4 +32,6 @@ urlpatterns = [
     url(r"^address/add_recv_address$", dbcontroller.addRecvOrderAddr),
     url(r"^address/add_get_address/(?P<trd_session>\S+)$", dbcontroller.getRecvOrderAddr), 
     url(r"^address/del_recv_address$", dbcontroller.deleteRecvOrderAddr)
+    url(r"^order/wxpay/create_pay$", app.create_pay),
+    url(r"^order/wxpay/notify$", app.wxpay)
 ]

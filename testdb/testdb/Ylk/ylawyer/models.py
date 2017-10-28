@@ -24,14 +24,15 @@ class ProductInfo(models.Model):                  #产品信息表
         
         
 class OrderList(models.Model):                   #订单信息表
-    user_id = models.CharField('用户微信id', max_length=155)
+    user_id = models.CharField('用户id', max_length=155)
     product_name = models.CharField('商品名称', max_length=200)
     product_desc = models.CharField('商品描述', max_length=200)
     product_price = models.IntegerField('商品价格', default=0)
     order_status = models.IntegerField('订单状态', default=1)
     img_url = models.CharField('图片地址', max_length=155)
     time = models.DateTimeField('下单时间', auto_now_add=True)
-    
+    out_trade_no = models.CharField('微信订单号', max_length=155)
+    sign = models.CharField('微信支付回调验证签名', max_length=155)
     def __str__(self):
         return self.product_name
     

@@ -7,6 +7,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.forms.models import model_to_dict 
 from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList, userAddrList
+from api_pub import current_datetime, check_session_value
  
 #/order/get_order_list       //获取用户订单
 '''
@@ -63,12 +64,7 @@ def success_none_json():
     return success_none_json_data
 
 
-##获取当前时间：
-def current_datetime():
-    utc=pytz.UTC 
-    now = datetime.datetime.now()
-    now = utc.localize(now)
-    return now
+
  
 
 ##用户session检查失败错误码
@@ -443,9 +439,37 @@ def insetUnPaidOrderList(userId, productId):
         orderObj.save()
         success_json = {'rtnCode' : 0, 'rtnMsg' : 'create order success'}
         return success_json
+ 
+##统一下单  
+
+
+def newOrderList(userId, productIdList, out_trade_no, sign):
+    for productId in productIdList:
+        resp_json = newOrder(userId, productId, out_trade_no, sign)
+        if resp_json['rtnCode'] != 0:
+            return resp_json
+    return resp_json
+
+##统一下单，新建未支付订单
+def newOrder(userId, productId, out_trade_no, sign):
+    try:
+        productObj = ProductInfo.objects.get(product_id=productId)
+    except:
+        err_json = response_no_product_err_json()
+        return err_json
+    else:
+        prod_dict_data = model_to_dict(productObj)  ##一个productId只对应一条记录
+        cur_time = current_datetime()
+        productName = prod_dict_data['product_name']
+        productDesc = prod_dict_data['product_desc']
+        productPrice = prod_dict_data['product_price']
+        orderStatus = DEFAULT_ORDER_UNSAVED_STATUS
+        imgUrl = prod_dict_data['product_img_url']
         
-        
-        
+        orderObj = OrderList(user_id=userId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign)
+        orderObj.save()
+        success_json = {'rtnCode' : 0, 'rtnMsg' : 'create order success'}
+        return success_json
         
         
 ##新增收藏列表记录
@@ -526,25 +550,5 @@ def setProductState(request):
                 
                 
                 
-##校验前端发起的查询所携带的用户加密过的trd_session
-def check_session_value(trd_session):
-    userId = DEFAULT_INVALID_USERID
-    try:
-        trdSessionObj = SessionOpenId.objects.get(trd_session=trd_session)
-        #print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-    except:
-        return False, userId
-    else:
-        trdSessionList = model_to_dict(trdSessionObj)
-        #print(trdSessionList)
-        time = trdSessionList['time']
-        #time = time.strftime('%b-%d-%y %H:%M:%S')
-        cur_time = current_datetime()
-        #print(time)
-        #print(cur_time)
-        #print((cur_time-time).days)
-        if ((cur_time-time).days >= SESSION_VALID_TIME_BY_DAYS):
-            return False, userId
-        userId = trdSessionList['user_id']
-        return True, userId
+
                 
