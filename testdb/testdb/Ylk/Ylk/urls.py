@@ -31,5 +31,5 @@ urlpatterns = [
     url(r"^address/set_recv_address$", dbcontroller.setRecOrderAddr),
     url(r"^address/add_recv_address$", dbcontroller.addRecvOrderAddr),
     url(r"^address/add_get_address/(?P<trd_session>\S+)$", dbcontroller.getRecvOrderAddr),
-    url(r"^address/del_recv_address/(?P<trd_session>\S+)$", dbcontroller.deleteRecvOrderAddr)
+    url(r"^address/del_recv_address(?P<trd_session>\S+)$", dbcontroller.deleteRecvOrderAddr)
 ]
