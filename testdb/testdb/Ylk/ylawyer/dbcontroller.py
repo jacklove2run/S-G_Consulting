@@ -139,8 +139,8 @@ def response_success_addr_set_json(data):
         addrDict = dict()
         addrDict.update(recv_name=recv_name, recv_phone=recv_phone, recv_addr=recv_addr, addr_id=addr_id)
         dataList.append(addrDict)
-        success_json['data'] = dataList
-        return success_json
+    success_json['data'] = dataList
+    return success_json
         
         
 
