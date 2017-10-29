@@ -64,7 +64,7 @@ def getTotalFeeByOutTradeShowNoList(outTradeShowNoList):
     try:
         for outTradeShowNo in outTradeShowNoList:
             orderListObj = OrderList.objects.get(out_trade_show_no=outTradeShowNo)
-            total_fee += orderListObj.product_price * 100
+            total_fee += int(orderListObj.product_price * 100)
     except:
         return INVALID_TOTAL_FEE
     else:
