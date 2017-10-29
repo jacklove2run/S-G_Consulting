@@ -77,6 +77,7 @@ def create_pay(request):
     '''
     if request.method == 'POST':
         trd_session = request.POST['trd_session']
+        addrId = request.POST['addr_id']
         productIdListStr = request.POST['productIdListStr']
         productIdList = getproductIdListFromStr(productIdListStr)
         print(productIdList)
@@ -92,7 +93,7 @@ def create_pay(request):
         else:
             SessionOpenIdObj = SessionOpenId.objects.get(user_id=curUserId)
             openid = SessionOpenIdObj.openId
-            if isFirstOrder == 'True':
+            if isFirstOrder == '1':
                 print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
                 data = create_first_pay_data(openid, total_fee)
                 out_trade_no = data['out_trade_no']
@@ -100,20 +101,20 @@ def create_pay(request):
                 out_trade_no = request.POST['out_trade_no'] #订单号
                 data = create_first_pay_data(openid, total_fee)
                 data['out_trade_no'] = out_trade_no
-            err_json = {'rtnCode' : 1, 'rtnMsg' : 'pay error'}
+            err_json = {'rtnCode' : 2, 'rtnMsg' : 'pay error'}
             wxpay = WxPay(config.merchant_key, **data)
             pay_info = wxpay.get_pay_info() 
             #pay_info_json = json.dumps(pay_info)
             #print(pay_info)
             sign = pay_info['sign']
             pay_info.pop('sign')
-            pay_info['total_fee'] =  total_fee
-            pay_info['rtnCode'] = 1
+            #pay_info['total_fee'] =  total_fee
+            pay_info['rtnCode'] = 0
             pay_info['rtnMsg'] = 'wxpay request success!'
             print(pay_info)
             if pay_info:
-                if isFirstOrder == 'True':
-                    newOrderList(curUserId, productIdList, out_trade_no, sign)
+                if isFirstOrder == '1':
+                    newOrderList(curUserId, productIdList, out_trade_no, sign, addrId)
                 return HttpResponse(json.dumps(pay_info), content_type="application/json")
             return HttpResponse(json.dumps(err_json), content_type="application/json")
     

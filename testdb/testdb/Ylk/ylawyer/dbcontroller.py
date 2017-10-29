@@ -443,15 +443,15 @@ def insetUnPaidOrderList(userId, productId):
 ##统一下单  
 
 
-def newOrderList(userId, productIdList, out_trade_no, sign):
+def newOrderList(userId, productIdList, out_trade_no, sign, addrId):
     for productId in productIdList:
-        resp_json = newOrder(userId, productId, out_trade_no, sign)
+        resp_json = newOrder(userId, productId, out_trade_no, sign, addrId)
         if resp_json['rtnCode'] != 0:
             return resp_json
     return resp_json
 
 ##统一下单，新建未支付订单
-def newOrder(userId, productId, out_trade_no, sign):
+def newOrder(userId, productId, out_trade_no, sign, addrId):
     try:
         productObj = ProductInfo.objects.get(product_id=productId)
     except:
@@ -466,7 +466,7 @@ def newOrder(userId, productId, out_trade_no, sign):
         orderStatus = DEFAULT_ORDER_UNSAVED_STATUS
         imgUrl = prod_dict_data['product_img_url']
         
-        orderObj = OrderList(user_id=userId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign)
+        orderObj = OrderList(user_id=userId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign, addr_id=addrId)
         orderObj.save()
         success_json = {'rtnCode' : 0, 'rtnMsg' : 'create order success'}
         return success_json
