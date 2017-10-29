@@ -52,7 +52,7 @@ def getTotalFeeByProductList(productIdList):
     try:
         for productId in productIdList:
             ProductInfoObj = ProductInfo.objects.get(product_id=productId)
-            total_fee += ProductInfoObj.product_price * 100
+            total_fee += int(ProductInfoObj.product_price * 100)
     except:
         return INVALID_TOTAL_FEE
     else:
