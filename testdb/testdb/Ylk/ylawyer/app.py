@@ -41,7 +41,8 @@ def create_first_pay_data(openid, total_fee):
                 'notify_url': config.notify_url,
                 'attach': '{"msg": "tesst message"}',
                 'trade_type': config.trade_type,
-                'openid': openid
+                'openid': openid,
+                'timeStamp' : str(int(time.time()))
             }
     out_trade_show_no = str(int(time.time()))
     data['out_trade_no'] = out_trade_show_no + os.popen('head -n 80 /dev/urandom | tr -dc a-z0-9 | head -c 10').read()
