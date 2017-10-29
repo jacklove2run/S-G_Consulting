@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.forms.models import model_to_dict 
 from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList, userAddrList
 from api_pub import current_datetime, check_session_value
- 
+import logging
 #/order/get_order_list       //获取用户订单
 '''
 params: {
@@ -33,7 +33,8 @@ DEFAULT_ORDER_UNSAVED_STATUS = 1   ##默认订单为未支付
 
 SESSION_VALID_TIME_BY_SECONDS = 30 * 24 * 3600
 SESSION_VALID_TIME_BY_DAYS = 30
-
+UPDATE_OUT_TRADE_NO_FAIL_JSON = {'rtnCode' : 2, 'rtnMsg' : 'update out trade NO. failed'}
+UPDATE_OUT_TRADE_NO_SUCCESS_JSON = {'rtnCode' : 0, 'rtnMsg' : 'update out trade NO. success'}
 def get_all_product_list_success_json():
     success_json = {'rtnCode' : 0, 'rtnMsg' : 'get all product list info success', 'data' : ''}
     product_list = [
@@ -113,8 +114,9 @@ def response_success_order_set_json(data):
             time = cur_data.time.strftime('%b-%d-%y %H:%M:%S')
             productDesc = cur_data.product_desc
             imgUrl = cur_data.img_url
+            out_trade_no = cur_data.out_trade_no
             orderInfo = dict()
-            orderInfo.update(id=id, user_id=userId, product_name=productName, product_desc=productDesc, product_price=productPrice, time=time, img_url=imgUrl)
+            orderInfo.update(id=id, user_id=userId, product_name=productName, product_desc=productDesc, product_price=productPrice, time=time, img_url=imgUrl, out_trade_no=out_trade_no)
             #print(orderInfo)
             dataList.append(orderInfo)
         success_json['data'] = dataList
@@ -459,15 +461,29 @@ def insetUnPaidOrderList(userId, productId):
 ##统一下单  
 
 
-def newOrderList(userId, productIdList, out_trade_no, sign, addrId):
-    for productId in productIdList:
-        resp_json = newOrder(userId, productId, out_trade_no, sign, addrId)
+def newOrderList(curUserId, productList, out_trade_show_no, out_trade_no, sign, addrId):
+    for productId in productList:
+        resp_json = newOrder(curUserId, productId, out_trade_show_no, out_trade_no, sign, addrId)
         if resp_json['rtnCode'] != 0:
             return resp_json
     return resp_json
-
+    
+##更新订单的微信校验订单号
+def updateOrderListOutTradeNoByOutTradeShowNoList(out_trade_no, outTradeShowNoList):
+    try:
+        for outTradeShowNo in outTradeShowNoList:
+            orderListObj = OrderList.objects.get(out_trade_show_no=outTradeShowNo)
+            orderListObj.out_trade_no = out_trade_no
+            orderListObj.save()
+    except Exception as e:
+        logging.error(e)
+        return UPDATE_OUT_TRADE_NO_FAIL_JSON
+    else:
+        return UPDATE_OUT_TRADE_NO_SUCCESS_JSON
+    
+        
 ##统一下单，新建未支付订单
-def newOrder(userId, productId, out_trade_no, sign, addrId):
+def newOrder(curUserId, productId, out_trade_show_no, out_trade_no, sign, addrId):
     try:
         productObj = ProductInfo.objects.get(product_id=productId)
     except:
@@ -482,7 +498,7 @@ def newOrder(userId, productId, out_trade_no, sign, addrId):
         orderStatus = DEFAULT_ORDER_UNSAVED_STATUS
         imgUrl = prod_dict_data['product_img_url']
         
-        orderObj = OrderList(user_id=userId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign, addr_id=addrId)
+        orderObj = OrderList(user_id=curUserId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign, addr_id=addrId, out_trade_show_no=out_trade_show_no)
         orderObj.save()
         success_json = {'rtnCode' : 0, 'rtnMsg' : 'create order success'}
         return success_json

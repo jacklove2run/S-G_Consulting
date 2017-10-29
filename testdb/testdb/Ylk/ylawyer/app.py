@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import time
 from django.http import HttpResponse
 from ylawyer import config
@@ -16,9 +17,9 @@ from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, Save
 
 INVALID_TOTAL_FEE = 0
 
-WRONG_PRODUCT_ID_INFO = {'rtnCode' : 2, 'rtnMsg' : 'Wrong Product id info!'}
+WRONG_PRODUCT_ID_INFO = {'rtnCode' : 2, 'rtnMsg' : 'Wrong Product id or out_trade_no info!'}
 DEFAULT_ORDER_ADDR_ID = 0
-
+DEFAULT_OUT_TRADE_NO = '9999999999'
 def get_nonce_str():
     '''
     获取随机字符串
@@ -27,13 +28,14 @@ def get_nonce_str():
     return str(uuid.uuid4()).replace('-', '')
     
 
+
 def create_first_pay_data(openid, total_fee):
     data = {
                 'appid': config.appid,
                 'mch_id': config.mch_id,
                 'nonce_str': get_nonce_str(),
                 'body': 'aa',                              # 商品描述
-                'out_trade_no': str(int(time.time())),       # 商户订单号
+                'out_trade_no': '',       # 商户订单号
                 'total_fee': total_fee,
                 'spbill_create_ip': config.spbill_create_ip,
                 'notify_url': config.notify_url,
@@ -41,7 +43,9 @@ def create_first_pay_data(openid, total_fee):
                 'trade_type': config.trade_type,
                 'openid': openid
             }
-    return data
+    out_trade_show_no = str(int(time.time()))
+    data['out_trade_no'] = out_trade_show_no + os.popen('head -n 80 /dev/urandom | tr -dc a-z0-9 | head -c 10').read()
+    return data, out_trade_show_no
     
 def getTotalFeeByProductList(productIdList):
     total_fee = 0
@@ -54,22 +58,31 @@ def getTotalFeeByProductList(productIdList):
     else:
         return total_fee
 
+def getTotalFeeByOutTradeShowNoList(outTradeShowNoList):
+    total_fee = 0
+    try:
+        for outTradeShowNo in outTradeShowNoList:
+            orderListObj = OrderList.objects.get(out_trade_show_no=outTradeShowNo)
+            total_fee += orderListObj.product_price * 100
+    except:
+        return INVALID_TOTAL_FEE
+    else:
+        return total_fee
         
-        
-def getproductIdListFromStr(productIdListStr):
-    productIdList = []
-    if productIdListStr == '':
+def getOutTradeShowNoListFromStr(outTradeShowNoListStr):
+    outTradeShowNoList = []
+    if outTradeShowNoListStr == '':
         return productIdList
-    productId = ''
-    for str in productIdListStr:
+    outTradeShowNo = ''
+    for str in outTradeShowNoListStr:
         if str != '&':
-            productId += str
+            outTradeShowNo += str
         else:
-            productIdList.append(productId)
-            productId = ''
-    if productId != '':
-        productIdList.append(productId)
-    return productIdList
+            outTradeShowNoList.append(outTradeShowNo)
+            outTradeShowNo = ''
+    if outTradeShowNo != '':
+        outTradeShowNoList.append(outTradeShowNo)
+    return outTradeShowNoList
 def create_pay(request):
     '''
     请求支付
@@ -77,29 +90,38 @@ def create_pay(request):
     '''
     if request.method == 'POST':
         trd_session = request.POST['trd_session']
-        productIdListStr = request.POST['productIdListStr']
-        productIdList = getproductIdListFromStr(productIdListStr)
-        print(productIdList)
-        total_fee = getTotalFeeByProductList(productIdList)
-        if total_fee == INVALID_TOTAL_FEE:
-            return HttpResponse(WRONG_PRODUCT_ID_INFO, content_type="application/json")
-        isFirstOrder = request.POST['isFirstOrder'] ##0表示不是第一次下单，1表示第一次下单
-        print(isFirstOrder)
         isValidSession, curUserId= check_session_value(trd_session)
         if isValidSession == False:
             err_json = response_invalid_session_json()
             return HttpResponse(json.dumps(err_json), content_type="application/json")
         else:
+            isFirstOrder = request.POST['isFirstOrder'] ##0表示不是第一次下单，1表示第一次下单
+            if isFirstOrder == '1':
+                productId = request.POST['product_id']
+                if 'addr_id' in request.POST:            ##表示点击直接购买
+                    addrId = request.POST['addr_id']
+                else:
+                    addrId = DEFAULT_ORDER_ADDR_ID      ##表示点击加入购物车
+                productList = []
+                productList.append(productId)
+                total_fee = getTotalFeeByProductList(productList)
+            else:
+                outTradeShowNoListStr = request.POST['outTradeShowNoListStr']
+                outTradeShowNoList = getOutTradeShowNoListFromStr(outTradeShowNoListStr)
+                total_fee = getTotalFeeByOutTradeShowNoList(outTradeShowNoList)
+                addrId = request.POST['addr_id']
+                print(outTradeShowNoList)
+            
+            if total_fee == INVALID_TOTAL_FEE:
+                return HttpResponse(WRONG_PRODUCT_ID_INFO, content_type="application/json")
             SessionOpenIdObj = SessionOpenId.objects.get(user_id=curUserId)
             openid = SessionOpenIdObj.openId
             if isFirstOrder == '1':
-                print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-                data = create_first_pay_data(openid, total_fee)
-                out_trade_no = data['out_trade_no']
+                data, out_trade_show_no = create_first_pay_data(openid, total_fee)
             else:
-                out_trade_no = request.POST['out_trade_no'] #订单号
-                data = create_first_pay_data(openid, total_fee)
-                data['out_trade_no'] = out_trade_no
+                data, out_trade_show_no = create_first_pay_data(openid, total_fee)
+                #data['out_trade_no'] = out_trade_no
+            out_trade_no = data['out_trade_no']
             err_json = {'rtnCode' : 2, 'rtnMsg' : 'pay error'}
             wxpay = WxPay(config.merchant_key, **data)
             pay_info = wxpay.get_pay_info() 
@@ -113,12 +135,13 @@ def create_pay(request):
             print(pay_info)
             if pay_info:
                 if isFirstOrder == '1':
-                    pay_info['out_trade_no'] = out_trade_no
-                    if 'addr_id' in request.POST:
-                        addrId = request.POST['addr_id']
-                    else:
-                        addrId = DEFAULT_ORDER_ADDR_ID
-                    newOrderList(curUserId, productIdList, out_trade_no, sign, addrId)
+                    result = newOrderList(curUserId, productList, out_trade_show_no, out_trade_no, sign, addrId)
+                    pay_info['out_trade_show_no'] = out_trade_show_no
+                else:
+                    pay_info['out_trade_show_no'] = ''
+                    result = updateOrderListOutTradeNoByOutTradeShowNoList(out_trade_no, outTradeShowNoList)
+                if result['rtnCode'] != 0:    ##操作失败
+                    return HttpResponse(json.dumps(result), content_type="application/json")
                 return HttpResponse(json.dumps(pay_info), content_type="application/json")
             return HttpResponse(json.dumps(err_json), content_type="application/json")
     
