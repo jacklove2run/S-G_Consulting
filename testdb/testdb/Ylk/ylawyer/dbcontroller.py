@@ -417,7 +417,23 @@ def insetUserOrderList(userId, productId):
         success_json = {'rtnCode' : 0, 'rtnMsg' : 'create order success'}
         return success_json
         
-
+def delUnPaidOrder(request):
+    if request.method == 'POST':
+        out_trade_no = request.POST['out_trade_no']
+        trd_session = request.POST['trd_session']
+        isValidSession, curUserId = check_session_value(trd_session)
+        if isValidSession == False:
+            err_json = response_invalid_session_json()
+            return HttpResponse(json.dumps(err_json), content_type="application/json")
+        else:
+            try:
+                OrderListObj = OrderList.objects.filter(user_id=curUserId, out_trade_no=out_trade_no, order_status=DEFAULT_ORDER_UNSAVED_STATUS).delete()
+            except:
+                err_json = {'rtnCode' : '2', 'rtnMsg' : 'wrong out_trade_no!'}
+                return HttpResponse(json.dumps(err_json), content_type="application/json")
+            else:
+                success_json = {'rtnCode' : 0, 'rtnMsg' : 'delete order success'}   
+                return HttpResponse(json.dumps(success_json), content_type="application/json")                
 ##新建未支付订单
 def insetUnPaidOrderList(userId, productId):
     try:

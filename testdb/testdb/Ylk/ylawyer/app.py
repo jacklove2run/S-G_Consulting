@@ -17,7 +17,7 @@ from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, Save
 INVALID_TOTAL_FEE = 0
 
 WRONG_PRODUCT_ID_INFO = {'rtnCode' : 2, 'rtnMsg' : 'Wrong Product id info!'}
-
+DEFAULT_ORDER_ADDR_ID = 0
 
 def get_nonce_str():
     '''
@@ -77,7 +77,6 @@ def create_pay(request):
     '''
     if request.method == 'POST':
         trd_session = request.POST['trd_session']
-        addrId = request.POST['addr_id']
         productIdListStr = request.POST['productIdListStr']
         productIdList = getproductIdListFromStr(productIdListStr)
         print(productIdList)
@@ -114,6 +113,11 @@ def create_pay(request):
             print(pay_info)
             if pay_info:
                 if isFirstOrder == '1':
+                    pay_info['out_trade_no'] = out_trade_no
+                    if 'addr_id' in request.POST:
+                        addrId = request.POST['addr_id']
+                    else:
+                        addrId = DEFAULT_ORDER_ADDR_ID
                     newOrderList(curUserId, productIdList, out_trade_no, sign, addrId)
                 return HttpResponse(json.dumps(pay_info), content_type="application/json")
             return HttpResponse(json.dumps(err_json), content_type="application/json")
