@@ -112,7 +112,7 @@ def create_pay(request):
                 total_fee = getTotalFeeByOutTradeShowNoList(outTradeShowNoList)
                 addrId = request.POST['addr_id']
                 print(outTradeShowNoList)
-            
+            print(total_fee)
             if total_fee == INVALID_TOTAL_FEE:
                 return HttpResponse(WRONG_PRODUCT_ID_INFO, content_type="application/json")
             SessionOpenIdObj = SessionOpenId.objects.get(user_id=curUserId)
