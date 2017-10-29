@@ -21,14 +21,15 @@ from weixin import WXAPPAPI
 from ylawyer.dbcontroller import current_datetime
 from ylawyer.models import SessionOpenId
 
+APP_ID = 'wx95f100449fab36b3'
+APP_SECRET = 'c0914c97100735c291193be50dbbebab'
 
 def get_login_session(request):                     ##从客户端传来的登录信息获取user info
     if request.method == 'POST':
         code = request.POST['code']
     #encryptedData = data['username']
     #iv = data['password']
-    APP_ID = 'wx95f100449fab36b3'
-    APP_SECRET = 'c0914c97100735c291193be50dbbebab'
+
     api = WXAPPAPI(appid=APP_ID,
                   app_secret=APP_SECRET)
     session_info = api.exchange_code_for_session_key(code=code)
@@ -37,24 +38,24 @@ def get_login_session(request):                     ##从客户端传来的登�
 
     session_key = session_info.get('session_key')
     openid = session_info.get('openid')
-    
+    print(openid)
+    print(session_key)
+    success_json = {'rtnCode' : 0, 'rtnMsg' : 'create user info success', 'trd_session' : ''}
+    trd_session = os.popen('head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168').read()   ##生成168位随机数当作key
+    time = current_datetime()
     try:
-        success_json = {'rtnCode' : 0, 'rtnMsg' : 'create user info success', 'trd_session' : ''}
-        trd_session = os.popen('head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168').read()   ##生成168位随机数当作key
         sessionObj = SessionOpenId.objects.get(openId=openid)
     except:
         if openid:
             #trd_session = os.popen('head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168').read()   ##生成168位随机数当作key
-            time = current_datetime()
             sessionObj = SessionOpenId(trd_session=trd_session,session_key=session_key, openId=openid, time=time)
             sessionObj.save()
-        print(openid)
-        print(session_key)
         success_json['trd_session'] = trd_session
         return HttpResponse(json.dumps(success_json), content_type="application/json")
     else:
         # sessionObj.update(trd_session=trd_session)
         sessionObj.trd_session = trd_session
+        sessionObj.time = time
         sessionObj.save()
         success_json['trd_session'] = trd_session
         success_json['rtnMsg'] = 'Update user info success'
