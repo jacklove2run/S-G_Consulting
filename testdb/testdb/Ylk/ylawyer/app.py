@@ -159,6 +159,7 @@ def wxpay(request):
     :return:
     '''
     print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    print(request.POST)
     if request.method == 'POST':
         try:
             data = xml_to_dict(request.data)
