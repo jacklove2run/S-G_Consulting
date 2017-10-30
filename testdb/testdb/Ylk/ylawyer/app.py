@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from ylawyer import config
 #from ylawyer import wxpay
 import sys
-from wxpay import WxPay
+from wxpay import WxPay, xml_to_dict, dict_to_xml
 #from wxpay import WxPay, get_nonce_str, dict_to_xml, xml_to_dict
 import json 
 import logging
