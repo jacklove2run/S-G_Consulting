@@ -111,7 +111,8 @@ def response_success_order_set_json(data):
             productName = cur_data.product_name.encode('utf-8').decode('utf-8')
             print(cur_data.product_name)
             productPrice = cur_data.product_price
-            time = cur_data.time.strftime('%b-%d-%y %H:%M:%S')
+            #time = cur_data.time.strftime('%b-%d-%y %H:%M:%S')
+            time = cur_data.time.strftime('%Y/%m/%d %H:%M:%S')
             productDesc = cur_data.product_desc
             imgUrl = cur_data.img_url
             out_trade_no = cur_data.out_trade_no
