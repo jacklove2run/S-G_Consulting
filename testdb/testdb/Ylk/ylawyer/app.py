@@ -173,7 +173,7 @@ def wxpay(request):
             #print(data)
             print(total_fee)
             print(out_trade_no)
-            if result_code == 'SUCESS':
+            if result_code == 'SUCCESS':
                 order_total_fee = getTotalFeeByOrderList(orderListObj)
                 print(order_total_fee)
                 if order_total_fee == total_fee:
@@ -183,6 +183,12 @@ def wxpay(request):
                         curOrder.save()
                 else:
                     print('pay fail')
+            else:
+                result_data = {
+                    'return_code': 'FAIL',
+                    'return_msg': 'FAIL'
+                }
+                return HttpResponse(dict_to_xml(result_data), content_type="application/xml")
         except Exception as e:
             logging.error(e)
         else:
