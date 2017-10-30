@@ -159,10 +159,10 @@ def wxpay(request):
     :return:
     '''
     print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-    print(request.raw_data)
+    print(request.body)
     if request.method == 'POST':
         try:
-            data = xml_to_dict(request.raw_data)
+            data = xml_to_dict(request.body)
             print(data)
             result_code = data['result_code']
             sign = data['sign']
