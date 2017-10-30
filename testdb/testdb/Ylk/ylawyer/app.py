@@ -133,7 +133,7 @@ def create_pay(request):
             #pay_info['total_fee'] =  total_fee
             pay_info['rtnCode'] = 0
             pay_info['rtnMsg'] = 'wxpay request success!'
-            print(pay_info)
+            #print(pay_info)
             if pay_info:
                 if isFirstOrder == '1':
                     result = newOrderList(curUserId, productList, out_trade_show_no, out_trade_no, sign, addrId)
@@ -141,6 +141,7 @@ def create_pay(request):
                 else:
                     pay_info['out_trade_show_no'] = ''
                     result = updateOrderListOutTradeNoByOutTradeShowNoList(out_trade_no, outTradeShowNoList)
+                print(pay_info)
                 if result['rtnCode'] != 0:    ##操作失败
                     return HttpResponse(json.dumps(result), content_type="application/json")
                 return HttpResponse(json.dumps(pay_info), content_type="application/json")
