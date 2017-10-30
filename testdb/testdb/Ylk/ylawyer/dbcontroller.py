@@ -423,7 +423,7 @@ def insetUserOrderList(userId, productId):
         
 def delUnPaidOrder(request):
     if request.method == 'POST':
-        out_trade_no = request.POST['out_trade_no']
+        out_trade_show_no = request.POST['out_trade_show_no']
         trd_session = request.POST['trd_session']
         isValidSession, curUserId = check_session_value(trd_session)
         if isValidSession == False:
@@ -431,7 +431,7 @@ def delUnPaidOrder(request):
             return HttpResponse(json.dumps(err_json), content_type="application/json")
         else:
             try:
-                OrderListObj = OrderList.objects.filter(user_id=curUserId, out_trade_no=out_trade_no, order_status=DEFAULT_ORDER_UNSAVED_STATUS).delete()
+                OrderListObj = OrderList.objects.filter(user_id=curUserId, out_trade_show_no=out_trade_show_no, order_status=DEFAULT_ORDER_UNSAVED_STATUS).delete()
             except:
                 err_json = {'rtnCode' : '2', 'rtnMsg' : 'wrong out_trade_no!'}
                 return HttpResponse(json.dumps(err_json), content_type="application/json")
