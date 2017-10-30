@@ -12,7 +12,7 @@ import json
 import logging
 import uuid
 from api_pub import current_datetime, check_session_value
-from ylawyer.dbcontroller import response_invalid_session_json, newOrderList, updateOrderListOutTradeNoByOutTradeShowNoList
+from ylawyer.dbcontroller import response_invalid_session_json, newOrderList, updateOrderListOutTradeNoByOutTradeShowNoList, DEFAULT_ORDER_SAVED_STATUS
 from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList, userAddrList
 
 INVALID_TOTAL_FEE = 0
