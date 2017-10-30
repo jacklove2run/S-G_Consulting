@@ -147,7 +147,12 @@ def create_pay(request):
                 return HttpResponse(json.dumps(pay_info), content_type="application/json")
             return HttpResponse(json.dumps(err_json), content_type="application/json")
     
-    
+def getTotalFeeByOrderList(orderListObj):
+    order_total_fee = 0
+    for curOrder in orderListObj:
+        order_price = curOrder.product_price
+        order_total_fee += int(order_price * 100)
+    return order_total_fee
 def wxpay(request):
     '''
     支付回调通知
@@ -157,19 +162,26 @@ def wxpay(request):
     if request.method == 'POST':
         try:
             data = xml_to_dict(request.data)
+            print(data)
             result_code = data['result_code']
             sign = data['sign']
             total_fee = data['total_fee']
             openid = data['openid']
             out_trade_no = data['out_trade_no']
-            orderListObj = OrderList.objects.get(out_trade_no=out_trade_no)
+            orderListObj = OrderList.objects.filter(out_trade_no=out_trade_no)
         except Exception as e:
             logging.error(e)
         else:
-            print(data)
-            if result_code == 'SUCESS' and total_fee == orderListObj:
-                orderListObj.order_status = DEFAULT_ORDER_SAVED_STATUS
-                orderListObj.save()
+            #print(data)
+            if result_code == 'SUCESS':
+                order_total_fee = getTotalFeeByOrderList(orderListObj)
+                if order_total_fee == total_fee:
+                    print('pay success')
+                    for curOrder in orderListObj:
+                        curOrder.order_status = DEFAULT_ORDER_SAVED_STATUS
+                        curOrder.save()
+                else:
+                    print('pay fail')
         result_data = {
             'return_code': 'SUCCESS',
             'return_msg': 'OK'
