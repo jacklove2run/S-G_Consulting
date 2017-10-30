@@ -152,7 +152,7 @@ def getTotalFeeByOrderList(orderListObj):
     for curOrder in orderListObj:
         order_price = curOrder.product_price
         order_total_fee += int(order_price * 100)
-    return order_total_fee
+    return str(order_total_fee)
 def wxpay(request):
     '''
     支付回调通知
