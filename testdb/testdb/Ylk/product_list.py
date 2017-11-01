@@ -109,7 +109,7 @@ PRODUCT_LIST = [
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }
             ]
-        }
+        },
         {
             'tabId' : '5', 
             'name' : '个人代办', 
@@ -138,7 +138,7 @@ PRODUCT_LIST = [
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }
             ]
-        }
+        },
         {
             'tabId' : '6', 
             'name' : '公司代办', 
@@ -174,7 +174,7 @@ PRODUCT_LIST = [
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }
             ]
-        }
+        },
         {
             'tabId' : '7', 
             'name' : '公司法务外包', 
