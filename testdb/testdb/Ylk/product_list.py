@@ -42,21 +42,21 @@ PRODUCT_LIST = [
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '3', 
                     'product_name' : '写诉状', 
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '4', 
                     'product_name' : '写答辩状', 
                     'product_price' : '5000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '5', 
                     'product_name' : '写劳动仲裁申请书', 
@@ -158,14 +158,14 @@ PRODUCT_LIST = [
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '15', 
                     'product_name' : '内部制度建设', 
                     'product_price' : '1000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '16', 
                     'product_name' : '专项法律培训', 
@@ -194,21 +194,21 @@ PRODUCT_LIST = [
                     'product_price' : '3000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '19', 
                     'product_name' : '创业公司专属法务（年度版）', 
                     'product_price' : '6000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '20', 
                     'product_name' : '公司专属法务（基础版）', 
                     'product_price' : '10000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '21', 
                     'product_name' : '公司专属法务（升级版）', 
