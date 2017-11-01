@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-PRODUCT_LIST = 
-    [
+PRODUCT_LIST = [
         {
             'tabId' : '1', 
             'name' : '常用推荐', 
