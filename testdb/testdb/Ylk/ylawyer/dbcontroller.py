@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.forms.models import model_to_dict 
 from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList, userAddrList
 from api_pub import current_datetime, check_session_value
+from product_list import PRODUCT_LIST
 import logging
 #/order/get_order_list       //获取用户订单
 '''
@@ -37,21 +38,8 @@ UPDATE_OUT_TRADE_NO_FAIL_JSON = {'rtnCode' : 2, 'rtnMsg' : 'update out trade NO.
 UPDATE_OUT_TRADE_NO_SUCCESS_JSON = {'rtnCode' : 0, 'rtnMsg' : 'update out trade NO. success'}
 def get_all_product_list_success_json():
     success_json = {'rtnCode' : 0, 'rtnMsg' : 'get all product list info success', 'data' : ''}
-    product_list = [
-    {'tabId' : '1', 'name' : '常用推荐', 'tab_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg',
-    'services' : [{'product_id' : '1', 'product_name' : '合同服务', 'product_price' : '500', 'product_desc' : '职业律师代写', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}, 
-                  {'product_id' : '2', 'product_name' : '合同审查', 'product_price' : '300', 'product_desc' : '细致入微，不会放过一个细节', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}]},
-    {'tabId' : '2', 'name' : '合同服务', 'tab_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg',
-    'services' : [{'product_id' : '1', 'product_name' : '合同服务', 'product_price' : '100', 'product_desc' : '职业律师代写', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}, 
-                  {'product_id' : '2', 'product_name' : '合同审查', 'product_price' : '100', 'product_desc' : '细致入微，不会放过一个细节', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}]},
-    {'tabId' : '3', 'name' : '谈判服务', 'tab_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg',
-    'services' : [{'product_id' : '3', 'product_name' : '谈判服务', 'product_price' : '100', 'product_desc' : '职业律师谈判服务', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}, 
-                  {'product_id' : '4', 'product_name' : '谈判谈判', 'product_price' : '100', 'product_desc' : '细致入微，不会放过一个细节', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}]},
-    {'tabId' : '4', 'name' : '诉讼服务', 'tab_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg',
-    'services' : [{'product_id' : '5', 'product_name' : '诉讼服务', 'product_price' : '100', 'product_desc' : '职业律师诉讼服务', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}, 
-                  {'product_id' : '6', 'product_name' : '打官司', 'product_price' : '100', 'product_desc' : '细致入微，不会放过一个细节', 'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'}]}
-                  ]
-    success_json['data'] = product_list
+    
+    success_json['data'] = PRODUCT_LIST
     return success_json
 
 
