@@ -129,7 +129,7 @@ PRODUCT_LIST = [
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
-                }
+                },
                 {
                     'product_id' : '12', 
                     'product_name' : '代办社保', 
