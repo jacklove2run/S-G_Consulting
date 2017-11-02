@@ -237,7 +237,7 @@ PRODUCT_LIST = [
 def setProductInfoList(reqeust):
     productList = PRODUCT_LIST
     for productInfo in productList:
-        for product in productInfo['service']
+        for product in productInfo['service']:
             product_id = product.product_id
             product_name = product.product_name
             product_price = 0.01
