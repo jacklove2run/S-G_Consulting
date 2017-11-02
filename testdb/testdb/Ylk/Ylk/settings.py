@@ -128,3 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = (
+    'static',  #这个名字是项目根目录下的文件夹名称，注意后面有逗号
+)
