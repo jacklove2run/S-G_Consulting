@@ -40,5 +40,5 @@ urlpatterns = [
     url(r"^order/wxpay/notify$", app.wxpay),
     url(r"^order/delete_unpaid_order$", dbcontroller.delUnPaidOrder),
     #url(r'^images/(?P<path>.*)$' , 'django.views.static.serve', {'document_root': os.path.join( settings.STATIC_PATH , 'images' ) } ),
-    url(r"^product/set_all_productinfo$", dbcontroller.setProductInfoList)
+    url(r"^product/set_all_productinfo$", product_list.setProductInfoList)
 ]
