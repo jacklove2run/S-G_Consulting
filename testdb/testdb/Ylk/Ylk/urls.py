@@ -20,7 +20,7 @@ from ylawyer import login
 from ylawyer import app
 from product_list import setProductInfoList
 import os
-import settings
+from Ylk import settings
 urlpatterns = [
     url(r"^order/get_order_list/(?P<trd_session>\S+)$", dbcontroller.getOrderList),
     url(r"^order/get_unsaved_order_list/(?P<trd_session>\S+)$", dbcontroller.getUnsavedOrderList),
