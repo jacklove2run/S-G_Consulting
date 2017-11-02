@@ -16,7 +16,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '1', 
             'name' : '常用推荐', 
-            'tab_img_url' : 'http://120.25.93.29/static/1.jpg',
+            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
             'services' : 
             [
                 {
@@ -38,7 +38,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '2', 
             'name' : '合同服务', 
-            'tab_img_url' : 'http://120.25.93.29/static/1.jpg',
+            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
             'services' : 
             [
                 {
@@ -81,7 +81,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '3', 
             'name' : '谈判服务', 
-            'tab_img_url' : 'http://120.25.93.29/static/1.jpg',
+            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
             'services' : 
             [
                 {
@@ -103,7 +103,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '4', 
             'name' : '诉讼服务', 
-            'tab_img_url' : 'http://120.25.93.29/static/1.jpg',
+            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
             'services' : 
             [
                 {
@@ -125,7 +125,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '5', 
             'name' : '个人代办', 
-            'tab_img_url' : 'http://120.25.93.29/static/1.jpg',
+            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
             'services' : 
             [
                 {
@@ -154,7 +154,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '6', 
             'name' : '公司代办', 
-            'tab_img_url' : 'http://120.25.93.29/static/1.jpg',
+            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
             'services' : 
             [
                 {
@@ -190,7 +190,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '7', 
             'name' : '公司法务外包', 
-            'tab_img_url' : 'http://120.25.93.29/static/1.jpg',
+            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
             'services' : 
             [
                 {
