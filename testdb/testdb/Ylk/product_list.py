@@ -1,4 +1,17 @@
 # -*- coding: utf-8 -*-
+import json 
+import datetime
+import pytz
+from django import forms
+from django.core import serializers
+from django.http import HttpResponse
+from django.forms.models import model_to_dict 
+from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList, userAddrList
+from api_pub import current_datetime, check_session_value
+from product_list import PRODUCT_LIST
+import logging
+
+     
 
 PRODUCT_LIST = [
         {
@@ -219,3 +232,22 @@ PRODUCT_LIST = [
             ]
         }
     ]
+    
+    
+def setProductInfoList(reqeust):
+    productList = PRODUCT_LIST
+    for productInfo in productList:
+        for product in productInfo['service']
+            product_id = product.product_id
+            product_name = product.product_name
+            product_price = 0.01
+            product_desc = product.product_desc
+            product_img_url = product.product_img_url
+            product_address = '北京'
+            service_type = '在线'
+            service_address = '北京'
+            service_time = '一周'
+            productInfoObj = ProductInfo(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_time=service_time)
+            productInfoObj.save()
+    success_json = {'rtnCode' : 0, 'rtnMsg' : 'update product info list success'}
+    return HttpResponse(json.dumps(success_json), content_type="application/json")   

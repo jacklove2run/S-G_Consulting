@@ -18,6 +18,7 @@ from django.contrib import admin
 from ylawyer import dbcontroller
 from ylawyer import login
 from ylawyer import app
+from product_list import setProductInfoList
 import os
 import settings
 urlpatterns = [
@@ -38,5 +39,6 @@ urlpatterns = [
     url(r"^order/wxpay/create_pay$", app.create_pay),
     url(r"^order/wxpay/notify$", app.wxpay),
     url(r"^order/delete_unpaid_order$", dbcontroller.delUnPaidOrder),
-    url(r'^images/(?P<path>.*)$' , 'django.views.static.serve', {'document_root': os.path.join( settings.STATIC_PATH , 'images' ) } )
+    #url(r'^images/(?P<path>.*)$' , 'django.views.static.serve', {'document_root': os.path.join( settings.STATIC_PATH , 'images' ) } ),
+    url(r"^product/set_all_productinfo$", dbcontroller.setProductInfoList)
 ]
