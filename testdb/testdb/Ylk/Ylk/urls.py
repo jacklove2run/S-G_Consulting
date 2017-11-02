@@ -21,7 +21,7 @@ from ylawyer import login
 from ylawyer import app
 import product_list
 import os
-from Ylk import settings
+from django.conf import settings
 urlpatterns = [
     url(r"^order/get_order_list/(?P<trd_session>\S+)$", dbcontroller.getOrderList),
     url(r"^order/get_unsaved_order_list/(?P<trd_session>\S+)$", dbcontroller.getUnsavedOrderList),
