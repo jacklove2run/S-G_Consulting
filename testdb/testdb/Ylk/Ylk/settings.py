@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 
+
+
 STATIC_PATH = os.path.join( os.path.dirname(__file__) , 'static' )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -128,8 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
-STATICFILES_DIRS = (
-    'static',  #这个名字是项目根目录下的文件夹名称，注意后面有逗号
-)
+#STATICFILES_DIRS = (
+#    'static',  #这个名字是项目根目录下的文件夹名称，注意后面有逗号
+#)

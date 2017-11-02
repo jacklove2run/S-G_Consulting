@@ -40,6 +40,6 @@ urlpatterns = [
     url(r"^order/wxpay/create_pay$", app.create_pay),
     url(r"^order/wxpay/notify$", app.wxpay),
     url(r"^order/delete_unpaid_order$", dbcontroller.delUnPaidOrder),
-    url(r'^static/(?P<path>.*)$' , 'views.static.serve', {'document_root': settings.STATICFILES_DIRS} ),
+    url(r'^static/(?P<path>.*)$' , 'views.static.serve', [{'document_root': settings.STATIC_ROOT}] ),
     url(r"^product/set_all_productinfo$", product_list.setProductInfoList)
 ]
