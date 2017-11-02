@@ -21,7 +21,7 @@ from ylawyer import login
 from ylawyer import app
 import product_list
 import os
-from django.conf.settings import STATIC_ROOT
+from Ylk.settings import STATIC_ROOT
 urlpatterns = [
     url(r"^order/get_order_list/(?P<trd_session>\S+)$", dbcontroller.getOrderList),
     url(r"^order/get_unsaved_order_list/(?P<trd_session>\S+)$", dbcontroller.getUnsavedOrderList),
