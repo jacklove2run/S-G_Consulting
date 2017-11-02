@@ -18,7 +18,7 @@ from django.contrib import admin
 from ylawyer import dbcontroller
 from ylawyer import login
 from ylawyer import app
-from product_list import setProductInfoList
+import product_list
 import os
 from Ylk import settings
 urlpatterns = [
