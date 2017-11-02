@@ -21,7 +21,9 @@ from ylawyer import login
 from ylawyer import app
 import product_list
 import os
-from Ylk.settings import STATIC_ROOT
+#from Ylk.settings import STATIC_ROOT
+from django.conf import settings
+from django.views.static import serve
 urlpatterns = [
     url(r"^order/get_order_list/(?P<trd_session>\S+)$", dbcontroller.getOrderList),
     url(r"^order/get_unsaved_order_list/(?P<trd_session>\S+)$", dbcontroller.getUnsavedOrderList),
@@ -40,6 +42,6 @@ urlpatterns = [
     url(r"^order/wxpay/create_pay$", app.create_pay),
     url(r"^order/wxpay/notify$", app.wxpay),
     url(r"^order/delete_unpaid_order$", dbcontroller.delUnPaidOrder),
-    url(r'^static/(?P<path>.*)$' , 'views.static.serve', {'document_root': STATIC_ROOT}),
+    url(r'^static/(?P<path>.*)$' , serve, {'document_root': settings.STATIC_ROOT}),
     url(r"^product/set_all_productinfo$", product_list.setProductInfoList)
 ]
