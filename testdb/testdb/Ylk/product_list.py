@@ -42,35 +42,35 @@ PRODUCT_LIST = [
             'services' : 
             [
                 {
-                    'product_id' : '1', 
+                    'product_id' : '3', 
                     'product_name' : '写合同', 
                     'product_price' : '500.0', 
                     'product_desc' : '职业律师代写', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }, 
                 {
-                    'product_id' : '2', 
+                    'product_id' : '4', 
                     'product_name' : '审合同', 
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '3', 
+                    'product_id' : '5', 
                     'product_name' : '写诉状', 
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '4', 
+                    'product_id' : '6', 
                     'product_name' : '写答辩状', 
                     'product_price' : '5000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '5', 
+                    'product_id' : '7', 
                     'product_name' : '写劳动仲裁申请书', 
                     'product_price' : '5000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
@@ -85,14 +85,14 @@ PRODUCT_LIST = [
             'services' : 
             [
                 {
-                    'product_id' : '6', 
+                    'product_id' : '8', 
                     'product_name' : '个人谈判', 
                     'product_price' : '1000.0', 
                     'product_desc' : '职业律师谈判服务', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }, 
                 {
-                    'product_id' : '7', 
+                    'product_id' : '9', 
                     'product_name' : '公司谈判', 
                     'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
@@ -107,14 +107,14 @@ PRODUCT_LIST = [
             'services' : 
             [
                 {
-                    'product_id' : '8', 
+                    'product_id' : '10', 
                     'product_name' : '指导打官司', 
                     'product_price' : '2000.0', 
                     'product_desc' : '职业律师诉讼服务', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }, 
                 {
-                    'product_id' : '9', 
+                    'product_id' : '11', 
                     'product_name' : '代理打官司', 
                     'product_price' : '5000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
@@ -129,21 +129,21 @@ PRODUCT_LIST = [
             'services' : 
             [
                 {
-                    'product_id' : '10', 
+                    'product_id' : '12', 
                     'product_name' : '代办遗嘱', 
                     'product_price' : '2000.0', 
                     'product_desc' : '职业律师诉讼服务', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }, 
                 {
-                    'product_id' : '11', 
+                    'product_id' : '13', 
                     'product_name' : '代办公证', 
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '12', 
+                    'product_id' : '14', 
                     'product_name' : '代办社保', 
                     'product_price' : '1000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
@@ -158,28 +158,28 @@ PRODUCT_LIST = [
             'services' : 
             [
                 {
-                    'product_id' : '13', 
+                    'product_id' : '15', 
                     'product_name' : '公司注册', 
                     'product_price' : '2000.0', 
                     'product_desc' : '职业律师诉讼服务', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }, 
                 {
-                    'product_id' : '14', 
+                    'product_id' : '16', 
                     'product_name' : '商标注册', 
                     'product_price' : '2000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '15', 
+                    'product_id' : '17', 
                     'product_name' : '内部制度建设', 
                     'product_price' : '1000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '16', 
+                    'product_id' : '18', 
                     'product_name' : '专项法律培训', 
                     'product_price' : '1000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
@@ -194,35 +194,35 @@ PRODUCT_LIST = [
             'services' : 
             [
                 {
-                    'product_id' : '17', 
+                    'product_id' : '19', 
                     'product_name' : '创业公司专属法务（试用版）', 
                     'product_price' : '1000.0', 
                     'product_desc' : '职业律师诉讼服务', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 }, 
                 {
-                    'product_id' : '18', 
+                    'product_id' : '20', 
                     'product_name' : '创业公司专属法务（季度版）', 
                     'product_price' : '3000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '19', 
+                    'product_id' : '21', 
                     'product_name' : '创业公司专属法务（年度版）', 
                     'product_price' : '6000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '20', 
+                    'product_id' : '22', 
                     'product_name' : '公司专属法务（基础版）', 
                     'product_price' : '10000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
                     'product_img_url' : 'https://o3pvuu23u.qnssl.com/img/lzwai.jpeg'
                 },
                 {
-                    'product_id' : '21', 
+                    'product_id' : '23', 
                     'product_name' : '公司专属法务（升级版）', 
                     'product_price' : '20000.0', 
                     'product_desc' : '细致入微，不会放过一个细节', 
@@ -236,12 +236,12 @@ PRODUCT_LIST = [
 def setProductInfoList(reqeust):
     productList = PRODUCT_LIST
     for productInfo in productList:
-        for product in productInfo['service']:
-            product_id = product.product_id
-            product_name = product.product_name
+        for product in productInfo['services']:
+            product_id = product['product_id']
+            product_name = product['product_name']
             product_price = 0.01
-            product_desc = product.product_desc
-            product_img_url = product.product_img_url
+            product_desc = product['product_desc']
+            product_img_url = product['product_img_url']
             product_address = '北京'
             service_type = '在线'
             service_address = '北京'
