@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django import views
 from ylawyer import dbcontroller
 from ylawyer import login
 from ylawyer import app
@@ -39,6 +40,6 @@ urlpatterns = [
     url(r"^order/wxpay/create_pay$", app.create_pay),
     url(r"^order/wxpay/notify$", app.wxpay),
     url(r"^order/delete_unpaid_order$", dbcontroller.delUnPaidOrder),
-    url(r'^static/(?P<path>.*)$' , 'django.views.static.serve', {'document_root': settings.STATICFILES_DIRS} ),
+    url(r'^static/(?P<path>.*)$' , 'views.static.serve', {'document_root': settings.STATICFILES_DIRS} ),
     url(r"^product/set_all_productinfo$", product_list.setProductInfoList)
 ]
