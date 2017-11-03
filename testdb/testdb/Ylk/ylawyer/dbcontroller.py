@@ -161,9 +161,8 @@ def resp_success_saved_product_set_json(data):
             productDict.update(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_way=service_way, service_time=service_time)
             
             dataList.append(productDict)
-            success_json['data'] = dataList
-            
-            return success_json
+            success_json['data'] = dataList   
+    return success_json
             
 ##获取地址列表         
 def getRecvOrderAddr(request, trd_session):
