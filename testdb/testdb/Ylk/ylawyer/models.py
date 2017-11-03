@@ -36,7 +36,7 @@ class OrderList(models.Model):                   #订单信息表
     out_trade_no = models.CharField('微信订单支付号', max_length=155, default='0')  ##支付用
     sign = models.CharField('微信支付回调验证签名', max_length=155)
     addr_id = models.CharField('订单地址id', max_length=155)
-	product_id = models.IntegerField("商品ID", default='1')
+    product_id = models.IntegerField("商品ID", default='1')
     def __str__(self):
         return self.product_name
     
