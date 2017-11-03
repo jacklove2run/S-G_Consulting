@@ -106,7 +106,7 @@ def response_success_order_set_json(data):
             out_trade_no = cur_data.out_trade_no
             out_trade_show_no = cur_data.out_trade_show_no
             orderInfo = dict()
-            orderInfo.update(id=product_id, user_id=userId, product_name=productName, product_desc=productDesc, product_price=productPrice, time=time, img_url=imgUrl, out_trade_no=out_trade_no, out_trade_show_no=out_trade_show_no)
+            orderInfo.update(id=id, user_id=userId, product_name=productName, product_desc=productDesc, product_price=productPrice, time=time, img_url=imgUrl, out_trade_no=out_trade_no, out_trade_show_no=out_trade_show_no)
             #print(orderInfo)
             dataList.append(orderInfo)
         success_json['data'] = dataList
