@@ -488,7 +488,7 @@ def newOrder(curUserId, productId, out_trade_show_no, out_trade_no, sign, addrId
         orderStatus = DEFAULT_ORDER_UNSAVED_STATUS
         imgUrl = prod_dict_data['product_img_url']
         
-        orderObj = OrderList(user_id=curUserId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign, addr_id=addrId, out_trade_show_no=out_trade_show_no)
+        orderObj = OrderList(user_id=curUserId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign, addr_id=addrId, out_trade_show_no=out_trade_show_no, product_id=productId)
         orderObj.save()
         success_json = {'rtnCode' : 0, 'rtnMsg' : 'create order success'}
         return success_json
