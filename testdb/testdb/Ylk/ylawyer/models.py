@@ -5,6 +5,9 @@ from django.db import models
 from django import forms
 # Create your models here.
 
+#class UserProfile(User):
+#    cname = models.CharField("中文名称", max_length=30)
+
 class ProductInfo(models.Model):                  #产品信息表
     product_id = models.IntegerField("商品ID")
     product_name = models.CharField('商品名称', max_length=200, default='')
