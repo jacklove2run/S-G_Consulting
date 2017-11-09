@@ -10,13 +10,11 @@ from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, Save
 from api_pub import current_datetime, check_session_value
 import logging
 
-     
-
 PRODUCT_LIST = [
         {
             'tabId' : '1', 
             'name' : '常用推荐', 
-            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
+            'tab_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/22.jpg',
             'services' : 
             [
                 {
@@ -24,209 +22,209 @@ PRODUCT_LIST = [
                     'product_name' : '写合同', 
                     'product_price' : '500', 
                     'product_desc' : '职业律师代写', 
-                    'product_img_url' : 'http://120.25.93.29/static/1.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/1.jpg'
                 }, 
                 {
                     'product_id' : '2', 
                     'product_name' : '审合同', 
                     'product_price' : '300', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/2.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/2.jpg'
                 }
             ]
         },
         {
             'tabId' : '2', 
             'name' : '合同服务', 
-            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
+            'tab_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/22.jpg',
             'services' : 
             [
                 {
                     'product_id' : '1', 
                     'product_name' : '写合同', 
-                    'product_price' : '500.0', 
+                    'product_price' : '500', 
                     'product_desc' : '职业律师代写', 
-                    'product_img_url' : 'http://120.25.93.29/static/1.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/1.jpg'
                 }, 
                 {
                     'product_id' : '2', 
                     'product_name' : '审合同', 
-                    'product_price' : '2000.0', 
+                    'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/2.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/2.jpg'
                 },
                 {
                     'product_id' : '3', 
                     'product_name' : '写诉状', 
-                    'product_price' : '2000.0', 
+                    'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/3.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/3.jpg'
                 },
                 {
                     'product_id' : '4', 
                     'product_name' : '写答辩状', 
-                    'product_price' : '5000.0', 
+                    'product_price' : '5000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/4.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/4.jpg'
                 },
                 {
                     'product_id' : '5', 
                     'product_name' : '写劳动仲裁申请书', 
-                    'product_price' : '5000.0', 
+                    'product_price' : '5000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/5.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/5.jpg'
                 }
             ]
         },
         {
             'tabId' : '3', 
             'name' : '谈判服务', 
-            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
+            'tab_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/22.jpg',
             'services' : 
             [
                 {
                     'product_id' : '6', 
                     'product_name' : '个人谈判', 
-                    'product_price' : '1000.0', 
+                    'product_price' : '1000', 
                     'product_desc' : '职业律师谈判服务', 
-                    'product_img_url' : 'http://120.25.93.29/static/6.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/6.jpg'
                 }, 
                 {
                     'product_id' : '7', 
                     'product_name' : '公司谈判', 
                     'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/7.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/7.jpg'
                 }
             ]
         },
         {
             'tabId' : '4', 
             'name' : '诉讼服务', 
-            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
+            'tab_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/23.jpg',
             'services' : 
             [
                 {
                     'product_id' : '8', 
                     'product_name' : '指导打官司', 
-                    'product_price' : '2000.0', 
+                    'product_price' : '2000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29/static/8.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/8.jpg'
                 }, 
                 {
                     'product_id' : '9', 
                     'product_name' : '代理打官司', 
-                    'product_price' : '5000.0', 
+                    'product_price' : '5000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/9.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/9.jpg'
                 }
             ]
         },
         {
             'tabId' : '5', 
             'name' : '个人代办', 
-            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
+            'tab_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/23.jpg',
             'services' : 
             [
                 {
                     'product_id' : '10', 
                     'product_name' : '代办遗嘱', 
-                    'product_price' : '2000.0', 
+                    'product_price' : '2000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29/static/10.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/10.jpg'
                 }, 
                 {
                     'product_id' : '11', 
                     'product_name' : '代办公证', 
-                    'product_price' : '2000.0', 
+                    'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/11.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/11.jpg'
                 },
                 {
                     'product_id' : '12', 
                     'product_name' : '代办社保', 
-                    'product_price' : '1000.0', 
+                    'product_price' : '1000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/12.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/12.jpg'
                 }
             ]
         },
         {
             'tabId' : '6', 
             'name' : '公司代办', 
-            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
+            'tab_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/23.jpg',
             'services' : 
             [
                 {
                     'product_id' : '13', 
                     'product_name' : '公司注册', 
-                    'product_price' : '2000.0', 
+                    'product_price' : '2000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29/static/13.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/13.jpg'
                 }, 
                 {
                     'product_id' : '14', 
                     'product_name' : '商标注册', 
-                    'product_price' : '2000.0', 
+                    'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/14.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/14.jpg'
                 },
                 {
                     'product_id' : '15', 
                     'product_name' : '内部制度建设', 
-                    'product_price' : '1000.0', 
+                    'product_price' : '1000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/15.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/15.jpg'
                 },
                 {
                     'product_id' : '16', 
                     'product_name' : '专项法律培训', 
-                    'product_price' : '1000.0', 
+                    'product_price' : '1000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/16.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/16.jpg'
                 }
             ]
         },
         {
             'tabId' : '7', 
             'name' : '公司法务外包', 
-            'tab_img_url' : 'http://120.25.93.29/static/22.jpg',
+            'tab_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/23.jpg',
             'services' : 
             [
                 {
                     'product_id' : '17', 
                     'product_name' : '创业公司专属法务（试用版）', 
-                    'product_price' : '1000.0', 
+                    'product_price' : '1000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29/static/17.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/17.jpg'
                 }, 
                 {
                     'product_id' : '18', 
                     'product_name' : '创业公司专属法务（季度版）', 
-                    'product_price' : '3000.0', 
+                    'product_price' : '3000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/18.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/18.jpg'
                 },
                 {
                     'product_id' : '19', 
                     'product_name' : '创业公司专属法务（年度版）', 
-                    'product_price' : '6000.0', 
+                    'product_price' : '6000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/19.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/19.jpg'
                 },
                 {
                     'product_id' : '20', 
                     'product_name' : '公司专属法务（基础版）', 
-                    'product_price' : '10000.0', 
+                    'product_price' : '10000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/20.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/20.jpg'
                 },
                 {
                     'product_id' : '21', 
                     'product_name' : '公司专属法务（升级版）', 
-                    'product_price' : '20000.0', 
+                    'product_price' : '20000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29/static/21.jpg'
+                    'product_img_url' : 'http://oz09w7fyw.bkt.clouddn.com/21.jpg'
                 }
             ]
         }
@@ -239,7 +237,7 @@ def setProductInfoList(reqeust):
         for product in productInfo['services']:
             product_id = product['product_id']
             product_name = product['product_name']
-            product_price = 0.01
+            product_price = 01
             product_desc = product['product_desc']
             product_img_url = product['product_img_url']
             product_address = '北京'
