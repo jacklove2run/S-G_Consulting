@@ -149,7 +149,7 @@ def resp_success_saved_product_set_json(data):
             product_name = productObj.product_name
             product_price = productObj.product_price
             product_desc = productObj.product_desc
-            product_img_url = productObj.product_img_url
+            product_img_url = PRODUCT_PIC_LIST[product_id-1]
             
             product_address = productObj.product_address
             service_type = productObj.service_type
