@@ -231,7 +231,31 @@ PRODUCT_LIST = [
             ]
         }
     ]
-    
+
+	
+PRODUCT_PIC_LIST = [
+    'http://120.25.93.29:8000/static/1.jpg',
+	'http://120.25.93.29:8000/static/2.jpg',
+	'http://120.25.93.29:8000/static/3.jpg',
+	'http://120.25.93.29:8000/static/4.jpg',
+	'http://120.25.93.29:8000/static/5.jpg',
+	'http://120.25.93.29:8000/static/6.jpg',
+	'http://120.25.93.29:8000/static/7.jpg',
+	'http://120.25.93.29:8000/static/8.jpg',
+	'http://120.25.93.29:8000/static/9.jpg',
+	'http://120.25.93.29:8000/static/10.jpg',
+	'http://120.25.93.29:8000/static/11.jpg',
+	'http://120.25.93.29:8000/static/12.jpg',
+	'http://120.25.93.29:8000/static/13.jpg',
+	'http://120.25.93.29:8000/static/14.jpg',
+	'http://120.25.93.29:8000/static/15.jpg',
+	'http://120.25.93.29:8000/static/16.jpg',
+	'http://120.25.93.29:8000/static/17.jpg',
+	'http://120.25.93.29:8000/static/18.jpg',
+	'http://120.25.93.29:8000/static/19.jpg',
+	'http://120.25.93.29:8000/static/20.jpg',
+	'http://120.25.93.29:8000/static/21.jpg'
+]
     
 def setProductInfoList(reqeust):
     productList = PRODUCT_LIST

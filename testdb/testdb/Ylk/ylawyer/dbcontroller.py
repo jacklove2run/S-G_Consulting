@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.forms.models import model_to_dict 
 from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, SavedProductList, userAddrList
 from api_pub import current_datetime, check_session_value
-from product_list import PRODUCT_LIST
+from product_list import PRODUCT_LIST, PRODUCT_PIC_LIST
 import logging
 #/order/get_order_list       //获取用户订单
 '''
@@ -102,7 +102,7 @@ def response_success_order_set_json(data):
             #time = cur_data.time.strftime('%b-%d-%y %H:%M:%S')
             time = cur_data.time.strftime('%Y/%m/%d %H:%M:%S')
             productDesc = cur_data.product_desc
-            imgUrl = cur_data.img_url
+            imgUrl = PRODUCT_PIC_LIST[id-1]
             out_trade_no = cur_data.out_trade_no
             out_trade_show_no = cur_data.out_trade_show_no
             orderInfo = dict()
