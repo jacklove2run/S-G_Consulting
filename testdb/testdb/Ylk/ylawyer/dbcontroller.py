@@ -97,7 +97,7 @@ def response_success_order_set_json(data):
             id = cur_data.product_id
             userId = cur_data.user_id
             productName = cur_data.product_name.encode('utf-8').decode('utf-8')
-            print(cur_data.product_name)
+            #print(cur_data.product_name)
             productPrice = cur_data.product_price
             #time = cur_data.time.strftime('%b-%d-%y %H:%M:%S')
             time = cur_data.time.strftime('%Y/%m/%d %H:%M:%S')
@@ -107,7 +107,7 @@ def response_success_order_set_json(data):
             out_trade_show_no = cur_data.out_trade_show_no
             orderInfo = dict()
             orderInfo.update(id=id, user_id=userId, product_name=productName, product_desc=productDesc, product_price=productPrice, time=time, img_url=imgUrl, out_trade_no=out_trade_no, out_trade_show_no=out_trade_show_no)
-            #print(orderInfo)
+            ##print(orderInfo)
             dataList.append(orderInfo)
         success_json['data'] = dataList
         return success_json
@@ -248,7 +248,7 @@ def setRecOrderAddr(request):
                 userAddObjAft.recipient_addr = recvAddr
                 userAddObjAft.save()
                 success_json['addr_id'] = addressId
-                print(recvAddr)
+                #print(recvAddr)
                 return HttpResponse(json.dumps(success_json), content_type="application/json")
         
 ##获取        
@@ -269,10 +269,10 @@ def getProductStoredInfo(request, cur_product_id, trd_session):
         err_json = response_invalid_session_json()
         return HttpResponse(json.dumps(err_json), content_type="application/json")
     else:
-        print(curUserId)
-        print(cur_product_id)
+        #print(curUserId)
+        #print(cur_product_id)
         savedProductObj = SavedProductList.objects.filter(user_id=curUserId, saved_product_id=cur_product_id)
-        print(savedProductObj.exists())
+        #print(savedProductObj.exists())
         if savedProductObj.exists():
             return HttpResponse(json.dumps(success_json), content_type="application/json")
         else:
@@ -332,14 +332,14 @@ def getUserInfo(request, trd_session):
 ##获取用户已完成订单列表
 def getOrderList(request,trd_session):
     isValidSession, curUserId= check_session_value(trd_session)
-    print(isValidSession)
+    #print(isValidSession)
     if isValidSession == False:
         err_json = response_invalid_session_json()
         return HttpResponse(json.dumps(err_json), content_type="application/json")
     else:   
         order_list = OrderList.objects.filter(user_id=curUserId, order_status=DEFAULT_ORDER_SAVED_STATUS)
     success_json = response_success_order_set_json(order_list)
-    print(success_json)
+    #print(success_json)
     return HttpResponse(json.dumps(success_json), content_type="application/json")
 
 ##获取用户未完成订单列表
@@ -361,7 +361,7 @@ def getUnsavedOrderList(request,trd_session):
 
 ##修改用户信息
 def updateUserInfo(request):
-    print(request.method)
+    #print(request.method)
     err_resp_json = {'rtnCode' : 0, 'rtnMsg' : 'create userObj success'}
     if request.method == 'POST':
         #try:
@@ -552,7 +552,7 @@ def setProductState(request):
             if productId == '' or trd_session == '' or typeId == '':
                 err_json = {'rtnCode' : 2, 'rtnMsg' : 'Lack of necessary fileld like productId,userId,typeId'}
                 return HttpResponse(json.dumps(err_json), content_type="application/json")
-                print(typeId)
+                #print(typeId)
             if typeId == '1':        ##1. 购买成功 2. 收藏 3. 取消收藏 4. 购买未成功
                 rtnJson = insetUserOrderList(curUserId, productId)
                 return HttpResponse(json.dumps(rtnJson), content_type="application/json")

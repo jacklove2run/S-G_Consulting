@@ -111,8 +111,8 @@ def create_pay(request):
                 outTradeShowNoList = getOutTradeShowNoListFromStr(outTradeShowNoListStr)
                 total_fee = getTotalFeeByOutTradeShowNoList(outTradeShowNoList)
                 addrId = request.POST['addr_id']
-                print(outTradeShowNoList)
-            print(total_fee)
+                #print(outTradeShowNoList)
+            #print(total_fee)
             if total_fee == INVALID_TOTAL_FEE:
                 return HttpResponse(WRONG_PRODUCT_ID_INFO, content_type="application/json")
             SessionOpenIdObj = SessionOpenId.objects.get(user_id=curUserId)
@@ -127,13 +127,13 @@ def create_pay(request):
             wxpay = WxPay(config.merchant_key, **data)
             pay_info = wxpay.get_pay_info() 
             #pay_info_json = json.dumps(pay_info)
-            #print(pay_info)
+            ##print(pay_info)
             sign = pay_info['sign']
             pay_info.pop('sign')
             #pay_info['total_fee'] =  total_fee
             pay_info['rtnCode'] = 0
             pay_info['rtnMsg'] = 'wxpay request success!'
-            #print(pay_info)
+            ##print(pay_info)
             if pay_info:
                 if isFirstOrder == '1':
                     result = newOrderList(curUserId, productList, out_trade_show_no, out_trade_no, sign, addrId)
@@ -141,7 +141,7 @@ def create_pay(request):
                 else:
                     pay_info['out_trade_show_no'] = ''
                     result = updateOrderListOutTradeNoByOutTradeShowNoList(out_trade_no, outTradeShowNoList)
-                print(pay_info)
+                #print(pay_info)
                 if result['rtnCode'] != 0:    ##操作失败
                     return HttpResponse(json.dumps(result), content_type="application/json")
                 return HttpResponse(json.dumps(pay_info), content_type="application/json")
@@ -158,31 +158,31 @@ def wxpay(request):
     支付回调通知
     :return:
     '''
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-    print(request.body)
+    #print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    #print(request.body)
     if request.method == 'POST':
         try:
             data = xml_to_dict(request.body)
-            print(data)
+            #print(data)
             result_code = data['result_code']
             sign = data['sign']
             total_fee = data['total_fee']
             openid = data['openid']
             out_trade_no = data['out_trade_no']
             orderListObj = OrderList.objects.filter(out_trade_no=out_trade_no)
-            #print(data)
-            print(total_fee)
-            print(out_trade_no)
+            ##print(data)
+            #print(total_fee)
+            #print(out_trade_no)
             if result_code == 'SUCCESS':
                 order_total_fee = getTotalFeeByOrderList(orderListObj)
-                print(order_total_fee)
+                #print(order_total_fee)
                 if order_total_fee == total_fee:
                     print('pay success')
                     for curOrder in orderListObj:
                         curOrder.order_status = DEFAULT_ORDER_SAVED_STATUS
                         curOrder.save()
                 else:
-                    print('pay fail')
+                    #print('pay fail')
             else:
                 result_data = {
                     'return_code': 'FAIL',

@@ -85,9 +85,9 @@ class WxPay(object):
         sign = self.create_sign(self.pay_data)
         self.pay_data['sign'] = sign
         xml_data = dict_to_xml(self.pay_data)
-        print(xml_data)
+        #print(xml_data)
         response = request(url=self.url, data=xml_data) 
-        print(response)
+        #print(response)
         if response:
             prepay_id = xml_to_dict(response).get('prepay_id')
             paySign_data = {
