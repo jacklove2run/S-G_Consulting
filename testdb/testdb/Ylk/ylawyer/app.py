@@ -182,7 +182,7 @@ def wxpay(request):
                         curOrder.order_status = DEFAULT_ORDER_SAVED_STATUS
                         curOrder.save()
                 else:
-                    #print('pay fail')
+                    print('pay fail')
             else:
                 result_data = {
                     'return_code': 'FAIL',
