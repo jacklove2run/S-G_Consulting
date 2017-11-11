@@ -43,6 +43,8 @@ def get_login_session(request):                     ##从客户端传来的登�
     success_json = {'rtnCode' : 0, 'rtnMsg' : 'create user info success', 'trd_session' : ''}
     trd_session = os.popen('head -n 80 /dev/urandom | tr -dc A-Za-z0-9 | head -c 168').read()   ##生成168位随机数当作key
     time = current_datetime()
+	print('aaaaaaaaaaaaaaaaaaaaaaa')
+	print(time)
     try:
         sessionObj = SessionOpenId.objects.get(openId=openid)
     except:
