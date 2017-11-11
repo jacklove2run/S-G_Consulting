@@ -16,7 +16,7 @@ PRODUCT_LIST = [
         {
             'tabId' : '1', 
             'name' : '常用推荐', 
-            'tab_img_url' : 'http://120.25.93.29:8000/static/22.jpg',
+            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
             'services' : 
             [
                 {
@@ -24,21 +24,21 @@ PRODUCT_LIST = [
                     'product_name' : '写合同', 
                     'product_price' : '500', 
                     'product_desc' : '职业律师代写', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/1.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/1.jpg'
                 }, 
                 {
                     'product_id' : '2', 
                     'product_name' : '审合同', 
                     'product_price' : '300', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/2.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/2.jpg'
                 }
             ]
         },
         {
             'tabId' : '2', 
             'name' : '合同服务', 
-            'tab_img_url' : 'http://120.25.93.29:8000/static/22.jpg',
+            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
             'services' : 
             [
                 {
@@ -46,42 +46,42 @@ PRODUCT_LIST = [
                     'product_name' : '写合同', 
                     'product_price' : '500', 
                     'product_desc' : '职业律师代写', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/1.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/1.jpg'
                 }, 
                 {
                     'product_id' : '2', 
                     'product_name' : '审合同', 
                     'product_price' : '300', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/2.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/2.jpg'
                 },
                 {
                     'product_id' : '3', 
                     'product_name' : '写诉状', 
                     'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/3.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/3.jpg'
                 },
                 {
                     'product_id' : '4', 
                     'product_name' : '写答辩状', 
                     'product_price' : '5000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/4.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/4.jpg'
                 },
                 {
                     'product_id' : '5', 
                     'product_name' : '写劳动仲裁申请书', 
                     'product_price' : '5000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/5.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/5.jpg'
                 }
             ]
         },
         {
             'tabId' : '3', 
             'name' : '谈判服务', 
-            'tab_img_url' : 'http://120.25.93.29:8000/static/22.jpg',
+            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
             'services' : 
             [
                 {
@@ -89,21 +89,21 @@ PRODUCT_LIST = [
                     'product_name' : '个人谈判', 
                     'product_price' : '1000', 
                     'product_desc' : '职业律师谈判服务', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/6.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/6.jpg'
                 }, 
                 {
                     'product_id' : '7', 
                     'product_name' : '公司谈判', 
                     'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/7.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/7.jpg'
                 }
             ]
         },
         {
             'tabId' : '4', 
             'name' : '诉讼服务', 
-            'tab_img_url' : 'http://120.25.93.29:8000/static/22.jpg',
+            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
             'services' : 
             [
                 {
@@ -111,21 +111,21 @@ PRODUCT_LIST = [
                     'product_name' : '指导打官司', 
                     'product_price' : '2000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/8.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/8.jpg'
                 }, 
                 {
                     'product_id' : '9', 
                     'product_name' : '代理打官司', 
                     'product_price' : '5000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/9.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/9.jpg'
                 }
             ]
         },
         {
             'tabId' : '5', 
             'name' : '个人代办', 
-            'tab_img_url' : 'http://120.25.93.29:8000/static/22.jpg',
+            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
             'services' : 
             [
                 {
@@ -133,28 +133,28 @@ PRODUCT_LIST = [
                     'product_name' : '代办遗嘱', 
                     'product_price' : '2000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/10.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/10.jpg'
                 }, 
                 {
                     'product_id' : '11', 
                     'product_name' : '代办公证', 
                     'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/11.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/11.jpg'
                 },
                 {
                     'product_id' : '12', 
                     'product_name' : '代办社保', 
                     'product_price' : '1000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/12.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/12.jpg'
                 }
             ]
         },
         {
             'tabId' : '6', 
             'name' : '公司代办', 
-            'tab_img_url' : 'http://120.25.93.29:8000/static/22.jpg',
+            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
             'services' : 
             [
                 {
@@ -162,35 +162,35 @@ PRODUCT_LIST = [
                     'product_name' : '公司注册', 
                     'product_price' : '2000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/13.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/13.jpg'
                 }, 
                 {
                     'product_id' : '14', 
                     'product_name' : '商标注册', 
                     'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/14.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/14.jpg'
                 },
                 {
                     'product_id' : '15', 
                     'product_name' : '内部制度建设', 
                     'product_price' : '1000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/15.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/15.jpg'
                 },
                 {
                     'product_id' : '16', 
                     'product_name' : '专项法律培训', 
                     'product_price' : '1000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/16.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/16.jpg'
                 }
             ]
         },
         {
             'tabId' : '7', 
             'name' : '公司法务外包', 
-            'tab_img_url' : 'http://120.25.93.29:8000/static/22.jpg',
+            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
             'services' : 
             [
                 {
@@ -198,35 +198,35 @@ PRODUCT_LIST = [
                     'product_name' : '创业公司专属法务（试用版）', 
                     'product_price' : '1000', 
                     'product_desc' : '职业律师诉讼服务', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/17.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/17.jpg'
                 }, 
                 {
                     'product_id' : '18', 
                     'product_name' : '创业公司专属法务（季度版）', 
                     'product_price' : '3000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/18.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/18.jpg'
                 },
                 {
                     'product_id' : '19', 
                     'product_name' : '创业公司专属法务（年度版）', 
                     'product_price' : '6000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/19.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/19.jpg'
                 },
                 {
                     'product_id' : '20', 
                     'product_name' : '公司专属法务（基础版）', 
                     'product_price' : '10000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/20.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/20.jpg'
                 },
                 {
                     'product_id' : '21', 
                     'product_name' : '公司专属法务（升级版）', 
                     'product_price' : '20000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'http://120.25.93.29:8000/static/21.jpg'
+                    'product_img_url' : 'https://weizhilawyers.com/static/21.jpg'
                 }
             ]
         }
@@ -234,27 +234,27 @@ PRODUCT_LIST = [
 
 	
 PRODUCT_PIC_LIST = [
-    'http://120.25.93.29:8000/static/1.jpg',
-	'http://120.25.93.29:8000/static/2.jpg',
-	'http://120.25.93.29:8000/static/3.jpg',
-	'http://120.25.93.29:8000/static/4.jpg',
-	'http://120.25.93.29:8000/static/5.jpg',
-	'http://120.25.93.29:8000/static/6.jpg',
-	'http://120.25.93.29:8000/static/7.jpg',
-	'http://120.25.93.29:8000/static/8.jpg',
-	'http://120.25.93.29:8000/static/9.jpg',
-	'http://120.25.93.29:8000/static/10.jpg',
-	'http://120.25.93.29:8000/static/11.jpg',
-	'http://120.25.93.29:8000/static/12.jpg',
-	'http://120.25.93.29:8000/static/13.jpg',
-	'http://120.25.93.29:8000/static/14.jpg',
-	'http://120.25.93.29:8000/static/15.jpg',
-	'http://120.25.93.29:8000/static/16.jpg',
-	'http://120.25.93.29:8000/static/17.jpg',
-	'http://120.25.93.29:8000/static/18.jpg',
-	'http://120.25.93.29:8000/static/19.jpg',
-	'http://120.25.93.29:8000/static/20.jpg',
-	'http://120.25.93.29:8000/static/21.jpg'
+    'https://weizhilawyers.com/static/1.jpg',
+	'https://weizhilawyers.com/static/2.jpg',
+	'https://weizhilawyers.com/static/3.jpg',
+	'https://weizhilawyers.com/static/4.jpg',
+	'https://weizhilawyers.com/static/5.jpg',
+	'https://weizhilawyers.com/static/6.jpg',
+	'https://weizhilawyers.com/static/7.jpg',
+	'https://weizhilawyers.com/static/8.jpg',
+	'https://weizhilawyers.com/static/9.jpg',
+	'https://weizhilawyers.com/static/10.jpg',
+	'https://weizhilawyers.com/static/11.jpg',
+	'https://weizhilawyers.com/static/12.jpg',
+	'https://weizhilawyers.com/static/13.jpg',
+	'https://weizhilawyers.com/static/14.jpg',
+	'https://weizhilawyers.com/static/15.jpg',
+	'https://weizhilawyers.com/static/16.jpg',
+	'https://weizhilawyers.com/static/17.jpg',
+	'https://weizhilawyers.com/static/18.jpg',
+	'https://weizhilawyers.com/static/19.jpg',
+	'https://weizhilawyers.com/static/20.jpg',
+	'https://weizhilawyers.com/static/21.jpg'
 ]
     
 def setProductInfoList(reqeust):
