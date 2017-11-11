@@ -43,5 +43,6 @@ urlpatterns = [
     url(r"^order/wxpay/notify$", app.wxpay),
     url(r"^order/delete_unpaid_order$", dbcontroller.delUnPaidOrder),
     url(r'^static/(?P<path>.*)$' , serve, {'document_root': settings.STATIC_ROOT}),
-    url(r"^product/set_all_productinfo$", product_list.setProductInfoList)
+    url(r"^product/set_all_productinfo$", product_list.setProductInfoList),
+    url(r'^admin/', admin.site.urls),
 ]
