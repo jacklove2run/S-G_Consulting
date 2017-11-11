@@ -10,9 +10,10 @@ from ylawyer import dbcontroller
 
 ##获取当前时间：
 def current_datetime():
-    utc=pytz.UTC 
+    #utc=pytz.UTC 
+    timeZone = pytz.timezone('Asia/Shanghai')
     now = datetime.datetime.now()
-    now = utc.localize(now)
+    now = timeZone.localize(now)
     return now
 
 ##校验前端发起的查询所携带的用户加密过的trd_session
