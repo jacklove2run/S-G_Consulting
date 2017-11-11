@@ -35,7 +35,7 @@ class OrderList(models.Model):                   #订单信息表
     order_status = models.IntegerField('订单状态', default=1)
     img_url = models.CharField('图片地址', max_length=155)
     #time = models.DateTimeField('下单时间', auto_now_add=True)
-	time = models.DateTimeField('下单时间')
+    time = models.DateTimeField('下单时间')
     out_trade_show_no = models.CharField('微信订单号', max_length=155, default='0') ##显示用
     out_trade_no = models.CharField('微信订单支付号', max_length=155, default='0')  ##支付用
     sign = models.CharField('微信支付回调验证签名', max_length=155)
