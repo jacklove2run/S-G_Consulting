@@ -14,7 +14,7 @@ def current_datetime():
     timeZone = pytz.timezone('Asia/Shanghai')
     now = datetime.datetime.now()
     now = timeZone.localize(now)
-	print(now)
+    print(now)
     return now
 
 ##校验前端发起的查询所携带的用户加密过的trd_session
