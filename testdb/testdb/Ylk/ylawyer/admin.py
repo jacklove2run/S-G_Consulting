@@ -16,7 +16,7 @@ class UserInfoAdmin(admin.ModelAdmin):
     search_fields = ('name', 'phone', 'email')
 
 class OrderListAdmin(admin.ModelAdmin):
-    list_display = ('user_id', 'product_name', 'product_price', 'recipient_name', 'recipient_phone', 'recipient_addr', 'time')
+    list_display = ('product_name', 'user_id', 'product_price', 'recipient_name', 'recipient_phone', 'recipient_addr', 'time')
     search_fields = ('user_id', 'product_name')
     
     
