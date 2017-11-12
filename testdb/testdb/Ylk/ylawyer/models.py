@@ -45,22 +45,22 @@ class OrderList(models.Model):                   #订单信息表
         return self.product_name
     
 class UserInfo(models.Model):
-    user_id = models.CharField('用户微信id', max_length=155)
-    user_wechat_name = models.CharField('用户微信昵称', max_length=155)
+    user_id = models.CharField('用户id', max_length=155)
+    user_wechat_name = models.CharField('用户微信昵称', max_length=155, default='')
     user_img_url = models.CharField('用户微信头像', max_length=255, default='')
     name = models.CharField('用户姓名', max_length=255, default='')
     phone = models.CharField('用户手机号', max_length=15, default='')
     email = models.CharField('用户邮箱', max_length=255, default='')
     address = models.CharField('用户通信地址', max_length=255, default='')
     def __str__(self):
-        return self.product_name
+        return self.user_id
     
 class SavedProductList(models.Model):        #用户收藏表
     user_id = models.CharField('用户微信id', max_length=155)
     saved_product_id = models.IntegerField("商品ID")   ##使用ProductInfo的key做外键方便多表查询
     
     def __str__(self):
-        return self.product_name
+        return self.user_id
     
 class SessionOpenId(models.Model):
     trd_session = models.CharField('3rd_session', max_length=256)
@@ -71,8 +71,7 @@ class SessionOpenId(models.Model):
     #time = models.DateTimeField('下单时间', auto_now_add=True)
     
     def __str__(self):
-    
-        return self.product_name
+        return self.user_id
         
 class userAddrList(models.Model):
     user_id = models.CharField('3rd_session', max_length=256)
@@ -80,4 +79,7 @@ class userAddrList(models.Model):
     recipient_name = models.CharField('收件人', max_length=255, default='')
     recipient_phone = models.CharField('收件人手机号', max_length=15, default='')
     recipient_addr = models.CharField('收件人地址', max_length=255, default='')
+    
+    def __str__(self):
+        return self.addr_id
     
