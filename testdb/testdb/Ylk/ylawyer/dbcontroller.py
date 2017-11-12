@@ -77,6 +77,9 @@ def response_no_product_err_json():
     err_json={'rtnCode' : 3, 'rtnMsg' : 'error: No this productId'}
     return err_json
     
+def response_no_product_or_addr_err_json():
+    err_json={'rtnCode' : 3, 'rtnMsg' : 'error: No this productId or addrId'}
+	return err_json
 
 ##查询成功返回成功码和data
 def response_success_json(data):
@@ -475,11 +478,17 @@ def updateOrderListOutTradeNoByOutTradeShowNoList(out_trade_no, outTradeShowNoLi
 def newOrder(curUserId, productId, out_trade_show_no, out_trade_no, sign, addrId):
     try:
         productObj = ProductInfo.objects.get(product_id=productId)
+		addrObj = userAddrList.objects.get(addr_id=addrId)
     except:
-        err_json = response_no_product_err_json()
+        err_json = response_no_product_or_addr_err_json()
         return err_json
     else:
         prod_dict_data = model_to_dict(productObj)  ##一个productId只对应一条记录
+		addr_dict_data = model_to_dict(addrObj)
+		recipient_name = addr_dict_data['recipient_name']
+		recipient_phone = addr_dict_data['recipient_phone']
+		recipient_addr = addr_dict_data['recipient_addr']
+		
         cur_time = current_datetime()
         productName = prod_dict_data['product_name']
         productDesc = prod_dict_data['product_desc']
@@ -487,7 +496,7 @@ def newOrder(curUserId, productId, out_trade_show_no, out_trade_no, sign, addrId
         orderStatus = DEFAULT_ORDER_UNSAVED_STATUS
         imgUrl = prod_dict_data['product_img_url']
         
-        orderObj = OrderList(user_id=curUserId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign, addr_id=addrId, out_trade_show_no=out_trade_show_no, product_id=productId)
+        orderObj = OrderList(user_id=curUserId, product_name=productName, product_price=productPrice, product_desc=productDesc, order_status= orderStatus, img_url=imgUrl, time=cur_time, out_trade_no=out_trade_no, sign=sign, addr_id=addrId, out_trade_show_no=out_trade_show_no, product_id=productId, recipient_name=recipient_name, recipient_phone=recipient_phone, recipient_addr=recipient_addr)
         orderObj.save()
         success_json = {'rtnCode' : 0, 'rtnMsg' : 'create order success'}
         return success_json
