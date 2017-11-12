@@ -10,6 +10,7 @@ from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, Save
 from api_pub import current_datetime, check_session_value
 from product_list import PRODUCT_LIST, PRODUCT_PIC_LIST
 import logging
+from ylawyer.app import DEFAULT_ORDER_ADDR_ID
 #/order/get_order_list       //获取用户订单
 '''
 params: {
