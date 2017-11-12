@@ -478,17 +478,22 @@ def updateOrderListOutTradeNoByOutTradeShowNoList(out_trade_no, outTradeShowNoLi
 def newOrder(curUserId, productId, out_trade_show_no, out_trade_no, sign, addrId):
     try:
         productObj = ProductInfo.objects.get(product_id=productId)
-        addrObj = userAddrList.objects.get(addr_id=addrId)
+        if addrId != DEFAULT_ORDER_ADDR_ID:
+            addrObj = userAddrList.objects.get(addr_id=addrId)
     except:
         err_json = response_no_product_or_addr_err_json()
         return err_json
     else:
         prod_dict_data = model_to_dict(productObj)  ##一个productId只对应一条记录
         addr_dict_data = model_to_dict(addrObj)
-        recipient_name = addr_dict_data['recipient_name']
-        recipient_phone = addr_dict_data['recipient_phone']
-        recipient_addr = addr_dict_data['recipient_addr']
-        
+        if addrId != DEFAULT_ORDER_ADDR_ID:
+            recipient_name = addr_dict_data['recipient_name']
+            recipient_phone = addr_dict_data['recipient_phone']
+            recipient_addr = addr_dict_data['recipient_addr']
+        else:
+            recipient_name = ''
+            recipient_phone = ''
+            recipient_addr = ''
         cur_time = current_datetime()
         productName = prod_dict_data['product_name']
         productDesc = prod_dict_data['product_desc']
