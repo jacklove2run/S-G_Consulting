@@ -480,9 +480,11 @@ def newOrder(curUserId, productId, out_trade_show_no, out_trade_no, sign, addrId
         productObj = ProductInfo.objects.get(product_id=productId)
         print(addrId)
         if addrId != DEFAULT_ORDER_ADDR_ID:
+            print('aaaaaaaaaaaaaaaa')
             print(addrId)
             addrObj = userAddrList.objects.get(addr_id=addrId)
-    except:
+    except Exception as e:
+        logging.error(e)
         err_json = response_no_product_or_addr_err_json()
         return err_json
     else:
