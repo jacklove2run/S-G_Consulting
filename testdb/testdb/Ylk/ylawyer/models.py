@@ -74,8 +74,8 @@ class SessionOpenId(models.Model):
         return self.user_id
         
 class userAddrList(models.Model):
-    user_id = models.CharField('3rd_session', max_length=256)
-    addr_id = models.AutoField(primary_key=True)
+    user_id = models.CharField('用户id', max_length=256)
+    addr_id = models.AutoField('地址id', primary_key=True)
     recipient_name = models.CharField('收件人', max_length=255, default='')
     recipient_phone = models.CharField('收件人手机号', max_length=15, default='')
     recipient_addr = models.CharField('收件人地址', max_length=255, default='')
