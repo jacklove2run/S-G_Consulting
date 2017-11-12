@@ -41,7 +41,7 @@ class OrderList(models.Model):                   #订单信息表
     sign = models.CharField('微信支付回调验证签名', max_length=155)
     addr_id = models.CharField('订单地址id', max_length=155)
     product_id = models.IntegerField("商品ID", default='1')
-	recipient_name = models.CharField('收件人', max_length=255, default='')
+    recipient_name = models.CharField('收件人', max_length=255, default='')
     recipient_phone = models.CharField('收件人手机号', max_length=15, default='')
     recipient_addr = models.CharField('收件人地址', max_length=255, default='')
     def __str__(self):
