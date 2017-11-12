@@ -1,0 +1,7 @@
+<uwsgi>
+    <socket>:8001</socket>
+    <chdir>/home/django/S-G_Consulting/testdb/testdb/Ylk</chdir>
+    <module>Ylk.wsgi</module>
+    <processes>4</processes> <!-- ½ø --> 
+    <daemonize>uwsgi.log</daemonize>
+</uwsgi>

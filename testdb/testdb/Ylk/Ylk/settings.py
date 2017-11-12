@@ -29,14 +29,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'a5ygmq7a1j3o+9w^*cnh9($p6!$-u7xnp^@(+r#zql0t+&t4=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['120.25.93.29']
+ALLOWED_HOSTS = ['120.25.93.29','weizhilawyers.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,9 +116,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
+DATETIME_FORMAT = 'Y-m-d H:i:s' 
+DATE_FORMAT = 'Y-m-d'
+
+SUIT_CONFIG = {  # suit页面配置
+    'ADMIN_NAME': '优律库',  #登录界面提示
+    'LIST_PER_PAGE': 20,
+    'MENU': ({'label': '用户管理', 'app': 'ylawyer', 'models': ('UserProfile',)},  #每一个字典表示左侧菜单的一栏
+             {'label': u'SQL管理', 'app': 'web_sso', 'models': ('web_sso.Sql', 'web_sso.PreSql', 'web_sso.Direction')},  # 可以是多个字典
+             ),
+    # label表示name，app表示上边的install的app，models表示用了哪些models
+}
 LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
