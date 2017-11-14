@@ -263,7 +263,7 @@ def setProductInfoList(reqeust):
         for product in productInfo['services']:
             product_id = product['product_id']
             product_name = product['product_name']
-            product_price = 0.01
+            product_price = product['product_price']
             product_desc = product['product_desc']
             product_img_url = product['product_img_url']
             product_address = '北京'
