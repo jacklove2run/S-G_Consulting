@@ -232,29 +232,29 @@ PRODUCT_LIST = [
         }
     ]
 
-	
+    
 PRODUCT_PIC_LIST = [
     'https://weizhilawyers.com/static/1.jpg',
-	'https://weizhilawyers.com/static/2.jpg',
-	'https://weizhilawyers.com/static/3.jpg',
-	'https://weizhilawyers.com/static/4.jpg',
-	'https://weizhilawyers.com/static/5.jpg',
-	'https://weizhilawyers.com/static/6.jpg',
-	'https://weizhilawyers.com/static/7.jpg',
-	'https://weizhilawyers.com/static/8.jpg',
-	'https://weizhilawyers.com/static/9.jpg',
-	'https://weizhilawyers.com/static/10.jpg',
-	'https://weizhilawyers.com/static/11.jpg',
-	'https://weizhilawyers.com/static/12.jpg',
-	'https://weizhilawyers.com/static/13.jpg',
-	'https://weizhilawyers.com/static/14.jpg',
-	'https://weizhilawyers.com/static/15.jpg',
-	'https://weizhilawyers.com/static/16.jpg',
-	'https://weizhilawyers.com/static/17.jpg',
-	'https://weizhilawyers.com/static/18.jpg',
-	'https://weizhilawyers.com/static/19.jpg',
-	'https://weizhilawyers.com/static/20.jpg',
-	'https://weizhilawyers.com/static/21.jpg'
+    'https://weizhilawyers.com/static/2.jpg',
+    'https://weizhilawyers.com/static/3.jpg',
+    'https://weizhilawyers.com/static/4.jpg',
+    'https://weizhilawyers.com/static/5.jpg',
+    'https://weizhilawyers.com/static/6.jpg',
+    'https://weizhilawyers.com/static/7.jpg',
+    'https://weizhilawyers.com/static/8.jpg',
+    'https://weizhilawyers.com/static/9.jpg',
+    'https://weizhilawyers.com/static/10.jpg',
+    'https://weizhilawyers.com/static/11.jpg',
+    'https://weizhilawyers.com/static/12.jpg',
+    'https://weizhilawyers.com/static/13.jpg',
+    'https://weizhilawyers.com/static/14.jpg',
+    'https://weizhilawyers.com/static/15.jpg',
+    'https://weizhilawyers.com/static/16.jpg',
+    'https://weizhilawyers.com/static/17.jpg',
+    'https://weizhilawyers.com/static/18.jpg',
+    'https://weizhilawyers.com/static/19.jpg',
+    'https://weizhilawyers.com/static/20.jpg',
+    'https://weizhilawyers.com/static/21.jpg'
 ]
     
 def setProductInfoList(reqeust):
@@ -270,7 +270,12 @@ def setProductInfoList(reqeust):
             service_type = '在线'
             service_address = '北京'
             service_time = '一周'
-            productInfoObj = ProductInfo(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_time=service_time)
-            productInfoObj.save()
+            try:
+                productInfoObj = ProductInfo.objects.get(product_id=product_id)
+                productInfoObj.product_price = product_price
+                productInfoObj.save()
+            except:
+                productInfoObj = ProductInfo(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_time=service_time)
+                productInfoObj.save()
     success_json = {'rtnCode' : 0, 'rtnMsg' : 'update product info list success'}
     return HttpResponse(json.dumps(success_json), content_type="application/json")   
