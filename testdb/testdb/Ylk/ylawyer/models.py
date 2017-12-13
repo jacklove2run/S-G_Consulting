@@ -25,7 +25,7 @@ class ProductInfo(models.Model):                  #产品信息表
     tab_img_url = models.CharField('导航图地址', max_length=200, default='')
     product_pic_url = models.CharField('展览页图片地址', max_length=255, default='')
     
-	product_dimension = models.CharField('产品单位', max_length=50, default='份')
+    product_dimension = models.CharField('产品单位', max_length=50, default='份')
     def __str__(self):
         return self.product_name    
 
