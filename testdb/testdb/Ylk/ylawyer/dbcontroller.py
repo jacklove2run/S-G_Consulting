@@ -74,7 +74,7 @@ TabOneInfo = {
 
 def productInfoListInit():
     productInfoList = []
-    tab_img_url = ''
+    tab_img_url = 'https://weizhilawyers.com/static/22.jpg'
     i = 0
     for tabId,name in TabList.items(): 
         productInfoDict = {}
