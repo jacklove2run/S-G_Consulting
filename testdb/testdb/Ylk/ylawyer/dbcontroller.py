@@ -73,11 +73,12 @@ TabOneInfo = {
         }
 
 def productInfoListInit():
-    productInfoDict = dict()
     productInfoList = []
-    serviceInfoList = []
     tab_img_url = ''
-    for tabId,name in TabList.items():
+    i = 0
+    for tabId,name in TabList.items(): 
+        productInfoDict = {}
+        serviceInfoList = []
         productInfoDict.update(tabId=tabId, name=name, tab_img_url=tab_img_url, services=serviceInfoList)
         productInfoList.append(productInfoDict)
     productInfoList[0] = TabOneInfo
@@ -85,8 +86,8 @@ def productInfoListInit():
 def get_all_product_list_success_json():
     success_json = {'rtnCode' : 0, 'rtnMsg' : 'get all product list info success', 'data' : ''}
     productInfoList = productInfoListInit()
-    serviceInfoDict = dict()
     for productInfo in ProductInfo.objects.all():
+        serviceInfoDict = {}
         tabId = productInfo.tab_id
         name = productInfo.tab_name
         tab_img_url = productInfo.tab_img_url
