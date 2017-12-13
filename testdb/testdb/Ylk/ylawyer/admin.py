@@ -7,7 +7,7 @@ from ylawyer.models import ProductInfo, OrderList, UserInfo, SessionOpenId, Save
 
 
 class ProductInfoAdmin(admin.ModelAdmin):
-    list_display = ('product_id', 'product_name', 'product_price', 'product_desc', 'product_img_url', 'product_address', 'service_type', 'service_address', 'service_way', 'service_time')
+    list_display = ('product_id', 'product_name', 'product_price', 'product_desc', 'product_img_url', 'product_address', 'service_type', 'service_address', 'service_time', 'product_dimension')
     # 定义搜索框以哪些字段可以搜索
     search_fields = ('product_name', 'product_id')
     

@@ -201,20 +201,6 @@ PRODUCT_LIST = [
                     'product_img_url' : 'https://weizhilawyers.com/static/17.jpg'
                 }, 
                 {
-                    'product_id' : '18', 
-                    'product_name' : '创业公司专属法务（季度版）', 
-                    'product_price' : '3000', 
-                    'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'https://weizhilawyers.com/static/18.jpg'
-                },
-                {
-                    'product_id' : '19', 
-                    'product_name' : '创业公司专属法务（年度版）', 
-                    'product_price' : '6000', 
-                    'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'https://weizhilawyers.com/static/19.jpg'
-                },
-                {
                     'product_id' : '20', 
                     'product_name' : '公司专属法务（基础版）', 
                     'product_price' : '10000', 

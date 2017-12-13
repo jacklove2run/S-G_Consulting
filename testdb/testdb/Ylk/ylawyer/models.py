@@ -13,14 +13,19 @@ class ProductInfo(models.Model):                  #产品信息表
     product_name = models.CharField('商品名称', max_length=200, default='')
     product_price = models.FloatField('商品价格')
     product_desc = models.CharField('商品信息', max_length=1000, default='')
-    product_img_url = models.CharField('图片地址', max_length=255, default='')
+    product_img_url = models.CharField('详情页图片地址', max_length=255, default='')
     
     product_address = models.CharField('服务地址', max_length=200, default='')
     service_type = models.CharField('服务方式：在线', max_length=200, default='')
     service_address = models.CharField('服务范围：北京', max_length=200, default='')
     service_way = models.CharField('服务期限', max_length=200, default='')
-    service_time = models.CharField('办理时间', max_length=200, default='')      
+    service_time = models.CharField('办理时间', max_length=200, default='')
+    tab_id = models.CharField('商品分类ID', max_length=20, default='1')
+    tab_name = models.CharField('商品分类', max_length=200, default='')
+    tab_img_url = models.CharField('导航图地址', max_length=200, default='')
+    product_pic_url = models.CharField('展览页图片地址', max_length=255, default='')
     
+	product_dimension = models.CharField('产品单位', max_length=50, default='份')
     def __str__(self):
         return self.product_name    
 

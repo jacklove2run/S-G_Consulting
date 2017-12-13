@@ -37,70 +37,10 @@ SESSION_VALID_TIME_BY_SECONDS = 30 * 24 * 3600
 SESSION_VALID_TIME_BY_DAYS = 30
 UPDATE_OUT_TRADE_NO_FAIL_JSON = {'rtnCode' : 2, 'rtnMsg' : 'update out trade NO. failed'}
 UPDATE_OUT_TRADE_NO_SUCCESS_JSON = {'rtnCode' : 0, 'rtnMsg' : 'update out trade NO. success'}
-
-TabList = {
-                '1' : '常用推荐',
-                '2' : '合同服务',
-                '3' : '谈判服务',
-                '4' : '诉讼服务',
-                '5' : '个人代办',
-                '6' : '公司代办',
-                '7' : '公司法务外包',
-}
-TabOneInfo = {
-            'tabId' : '1', 
-            'name' : '常用推荐', 
-            'tab_img_url' : 'https://weizhilawyers.com/static/22.jpg',
-            'services' : 
-            [
-                {
-                    'product_id' : '1', 
-                    'product_name' : '写合同', 
-                    'product_price' : '500', 
-                    'product_desc' : '职业律师代写', 
-                    'product_img_url' : 'https://weizhilawyers.com/static/1.jpg',
-                    'product_dimension' : '份'
-                }, 
-                {
-                    'product_id' : '2', 
-                    'product_name' : '审合同', 
-                    'product_price' : '300', 
-                    'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'https://weizhilawyers.com/static/2.jpg',
-                    'product_dimension' : '份'
-                }
-            ]
-        }
-
-def productInfoListInit():
-    productInfoDict = dict()
-    productInfoList = []
-    serviceInfoList = []
-    tab_img_url = ''
-    for tabId,name in TabList.items():
-        productInfoDict.update(tabId=tabId, name=name, tab_img_url=tab_img_url, services=serviceInfoList)
-        productInfoList.append(productInfoDict)
-    productInfoList[0] = TabOneInfo
-    return productInfoList
 def get_all_product_list_success_json():
     success_json = {'rtnCode' : 0, 'rtnMsg' : 'get all product list info success', 'data' : ''}
-    productInfoList = productInfoListInit()
-    serviceInfoDict = dict()
-    for productInfo in ProductInfo.objects.all():
-        tabId = productInfo.tab_id
-        name = productInfo.tab_name
-        tab_img_url = productInfo.tab_img_url
-        product_id = productInfo.product_id
-        product_name = productInfo.product_name
-        product_price = productInfo.product_price
-        product_desc = productInfo.product_desc
-        product_dimension = productInfo.product_dimension
-        product_img_url = productInfo.product_pic_url
-        serviceInfoDict.update(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_dimension=product_dimension)
-        productInfoList[int(tabId)-1]['services'].append(serviceInfoDict)
     
-    #success_json['data'] = PRODUCT_LIST
-    success_json['data'] = productInfoList
+    success_json['data'] = PRODUCT_LIST
     return success_json
 
 
@@ -151,10 +91,7 @@ def response_success_json(data):
     return success_json
     #return HttpResponse(json.dumps(dict_data), content_type="application/json")  
     
-def getUnitByName(product_name):
-    productObj = ProductInfo.objects.get(product_name=product_name)
-    return productObj.product_dimension
-    
+
 ##序列化查询结果集为json格式
 def response_success_order_set_json(data):
     success_json = {'rtnCode' : 0, 'rtnMsg' : 'success'}
@@ -166,7 +103,6 @@ def response_success_order_set_json(data):
             productName = cur_data.product_name.encode('utf-8').decode('utf-8')
             #print(cur_data.product_name)
             productPrice = cur_data.product_price
-            productDim = getUnitByName(productName)
             #time = cur_data.time.strftime('%b-%d-%y %H:%M:%S')
             time = cur_data.time.strftime('%Y/%m/%d %H:%M:%S')
             productDesc = cur_data.product_desc
@@ -174,7 +110,7 @@ def response_success_order_set_json(data):
             out_trade_no = cur_data.out_trade_no
             out_trade_show_no = cur_data.out_trade_show_no
             orderInfo = dict()
-            orderInfo.update(id=id, user_id=userId, product_name=productName, product_desc=productDesc, product_price=productPrice, time=time, img_url=imgUrl, out_trade_no=out_trade_no, out_trade_show_no=out_trade_show_no, product_dimension=productDim)
+            orderInfo.update(id=id, user_id=userId, product_name=productName, product_desc=productDesc, product_price=productPrice, time=time, img_url=imgUrl, out_trade_no=out_trade_no, out_trade_show_no=out_trade_show_no)
             ##print(orderInfo)
             dataList.append(orderInfo)
         success_json['data'] = dataList
@@ -224,9 +160,9 @@ def resp_success_saved_product_set_json(data):
             service_address = productObj.service_address
             service_way = productObj.service_way
             service_time = productObj.service_time 
-            product_dimension = productObj.product_dimension
+            
             productDict = dict()
-            productDict.update(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_way=service_way, service_time=service_time, product_dimension=product_dimension)
+            productDict.update(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_way=service_way, service_time=service_time)
             
             dataList.append(productDict)
             success_json['data'] = dataList   
@@ -368,9 +304,9 @@ def getProductInfo(request, cur_product_id):
         service_address = productObj.service_address
         service_way = productObj.service_way
         service_time = productObj.service_time 
-        product_dimension = productObj.product_dimension
+        
         productDict = dict()
-        productDict.update(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_way=service_way, service_time=service_time, product_dimension=product_dimension)
+        productDict.update(product_id=product_id, product_name=product_name, product_price=product_price, product_desc=product_desc, product_img_url=product_img_url, product_address=product_address, service_type=service_type, service_address=service_address, service_way=service_way, service_time=service_time)
         
         dataList.append(productDict)
         success_json['data'] = dataList
