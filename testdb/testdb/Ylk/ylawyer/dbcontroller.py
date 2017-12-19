@@ -62,13 +62,29 @@ TabOneInfo = {
                     'product_dimension' : '份'
                 }, 
                 {
-                    'product_id' : '2', 
-                    'product_name' : '审合同', 
-                    'product_price' : '300', 
+                    'product_id' : '6', 
+                    'product_name' : '个人谈判', 
+                    'product_price' : '2000', 
                     'product_desc' : '细致入微，不会放过一个细节', 
-                    'product_img_url' : 'https://weizhilawyers.com/static/2.jpg',
-                    'product_dimension' : '份'
-                }
+                    'product_img_url' : 'https://weizhilawyers.com/static/6.jpg',
+                    'product_dimension' : '件'
+                },
+				{
+                    'product_id' : '8', 
+                    'product_name' : '指导打官司', 
+                    'product_price' : '2000', 
+                    'product_desc' : '细致入微，不会放过一个细节', 
+                    'product_img_url' : 'https://weizhilawyers.com/static/8.jpg',
+                    'product_dimension' : '件'
+                },
+				{
+                    'product_id' : '20', 
+                    'product_name' : '公司专属法务（基础版）', 
+                    'product_price' : '10000', 
+                    'product_desc' : '细致入微，不会放过一个细节', 
+                    'product_img_url' : 'https://weizhilawyers.com/static/20.jpg',
+                    'product_dimension' : '年'
+                },
             ]
         }
 
